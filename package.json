@@ -1,0 +1,15 @@
+{
+  "name": "mutuelles-comparator",
+  "version": "1.0.0",
+  "description": "Comparateur de remboursement de semelles orthopédiques entre mutuelles",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "keywords": ["mutuelle", "semelles", "orthopédiques", "comparateur", "remboursement"],
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

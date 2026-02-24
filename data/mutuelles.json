@@ -1,0 +1,20 @@
+[
+  {
+    "nom": "Exemple Mutuelle A",
+    "remboursementMax": 120,
+    "pourcentage": 100,
+    "plafondAnnuel": 240,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale",
+    "baseSecu": 28.86
+  },
+  {
+    "nom": "Exemple Mutuelle B",
+    "remboursementMax": 80,
+    "pourcentage": 75,
+    "plafondAnnuel": 160,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale, podologue conventionné",
+    "baseSecu": 28.86
+  }
+]
