@@ -1,20 +1,161 @@
 [
   {
-    "nom": "Exemple Mutuelle A",
-    "remboursementMax": 120,
-    "pourcentage": 100,
-    "plafondAnnuel": 240,
+    "nom": "Harmonie Mutuelle",
+    "siren": "538518473",
+    "formules": {
+      "Essentiel": { "pourcentageBR": 60 },
+      "Equilibre": { "pourcentageBR": 150 },
+      "Confort": { "pourcentageBR": 200 },
+      "Optimum": { "pourcentageBR": 300 }
+    },
+    "forfaitAnnuel": null,
     "frequence": "1 paire par an",
-    "conditions": "Sur prescription médicale",
-    "baseSecu": 28.86
+    "conditions": "Sur prescription médicale"
   },
   {
-    "nom": "Exemple Mutuelle B",
-    "remboursementMax": 80,
-    "pourcentage": 75,
-    "plafondAnnuel": 160,
+    "nom": "MGEN",
+    "siren": "775685399",
+    "formules": {
+      "Référence": { "pourcentageBR": 170 },
+      "Référence Affinité": { "pourcentageBR": 230 },
+      "Intégrale": { "pourcentageBR": 290 }
+    },
+    "forfaitAnnuel": null,
     "frequence": "1 paire par an",
-    "conditions": "Sur prescription médicale, podologue conventionné",
-    "baseSecu": 28.86
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "Alan",
+    "siren": "813369193",
+    "formules": {
+      "Blue": { "pourcentageBR": 150 },
+      "Green": { "pourcentageBR": 300 },
+      "Purple": { "pourcentageBR": 300 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "MAIF",
+    "siren": "781974267",
+    "formules": {
+      "Essentielle": { "pourcentageBR": 100 },
+      "Découverte": { "pourcentageBR": 150 },
+      "Évolution": { "pourcentageBR": 200 },
+      "Optimale": { "pourcentageBR": 300 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "Malakoff Humanis",
+    "siren": "775691732",
+    "formules": {
+      "Niveau 1": { "pourcentageBR": 100 },
+      "Niveau 2": { "pourcentageBR": 200 },
+      "Niveau 3": { "pourcentageBR": 300 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "AG2R La Mondiale",
+    "siren": "486197757",
+    "formules": {
+      "Indice 60": { "pourcentageBR": 100 },
+      "Indice 90": { "pourcentageBR": 200 },
+      "Indice 120": { "pourcentageBR": 500 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "Swiss Life",
+    "siren": "341785840",
+    "formules": {
+      "Niveau 1": { "pourcentageBR": 100 },
+      "Niveau 4": { "pourcentageBR": 250 },
+      "Niveau 8": { "pourcentageBR": 400 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "Groupama",
+    "siren": "343115135",
+    "formules": {
+      "Santé Active 2": { "pourcentageBR": 130 },
+      "Santé Active 3": { "pourcentageBR": 150 },
+      "Santé Active 4": { "pourcentageBR": 200 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "MAAF",
+    "siren": "542073580",
+    "formules": {
+      "Vivazen 1": { "pourcentageBR": 100 },
+      "Vivazen 2": { "pourcentageBR": 150 },
+      "Vivazen 3": { "pourcentageBR": 200 },
+      "Vivazen 4": { "pourcentageBR": 250 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "AXA",
+    "siren": "310499959",
+    "formules": {
+      "Modulango 100": { "pourcentageBR": 100 },
+      "Modulango 125": { "pourcentageBR": 125 },
+      "Modulango 200": { "pourcentageBR": 150 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "Generali",
+    "siren": "552062663",
+    "formules": {
+      "Niveau 1": { "pourcentageBR": 125 },
+      "Niveau 3": { "pourcentageBR": 200 },
+      "Niveau 5": { "pourcentageBR": 300 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "April",
+    "siren": "377437694",
+    "formules": {
+      "Essentiel": { "pourcentageBR": 100 },
+      "Confort": { "pourcentageBR": 250 },
+      "Premium": { "pourcentageBR": 500 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "Macif (Apivia)",
+    "siren": "780435988",
+    "formules": {
+      "Vitamin V1": { "pourcentageBR": 100 },
+      "Vitamin V3": { "pourcentageBR": 150 },
+      "Vitamin V5": { "pourcentageBR": 200 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
   }
 ]
