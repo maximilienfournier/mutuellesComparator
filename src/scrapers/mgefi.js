@@ -1,12 +1,22 @@
 const { buildScrapedEntry } = require('./utils');
 
 /**
- * Données vérifiées depuis les documents MGEFI (février 2026).
- * Produit principal : Mgéfi Santé, 3 formules.
- * Ligne de garantie : "Petit appareillage / orthopédie".
+ * Données vérifiées depuis le Règlement Mutualiste MGÉFI Santé 2026.
+ * Source : « Règlement Mutualiste Mgéfi Santé — 2026 », Annexe I, page 32
+ * https://www.mgefi.fr/sites/default/files/offre/statuts-reglements-mutualistes-mgefi.pdf
  *
- * Note : MGEFI propose aussi l'offre VicTerria mais les données sont
- * similaires pour l'offre principale Mgéfi Santé.
+ * Section : MATÉRIEL MÉDICAL > EQUIPEMENTS HORS PANIER 100% SANTÉ
+ * Ligne de garantie : « Orthopédie / Prothèses (hors prothèses dentaires et auditives) /
+ * Grand Appareillage »
+ *
+ * Sources par formule :
+ * - Maitri Santé : PDF p.32 = 100% — lue directement
+ * - Vita Santé 2 : PDF p.32 = 200% — lue directement
+ * - Multi Santé 2 : PDF p.32 = 200% — lue directement
+ *
+ * Note : MGEFI propose aussi l'offre VicTerria (collectivités territoriales),
+ * non incluse ici. Seule l'offre principale Mgéfi Santé est retenue.
+ * SIREN : 499982098.
  */
 function getVerifiedData() {
   return buildScrapedEntry({
@@ -20,7 +30,7 @@ function getVerifiedData() {
     forfaitAnnuel: null,
     frequence: '1 paire par an',
     conditions: 'Sur prescription médicale',
-    dataSource: 'scraped',
+    dataSource: 'official',
     confidenceScore: 0.9
   });
 }
