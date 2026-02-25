@@ -38,7 +38,7 @@ describe('MMA Scraper', () => {
 
     test('les champs de traçabilité sont renseignés', () => {
       expect(data.dataSource).toBe('official');
-      expect(data.confidenceScore).toBeGreaterThanOrEqual(0.7);
+      expect(data.confidenceScore).toBeGreaterThanOrEqual(0.9);
       expect(data.lastUpdated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     });
   });
