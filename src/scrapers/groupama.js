@@ -1,12 +1,15 @@
 const { buildScrapedEntry } = require('./utils');
 
 /**
- * Données vérifiées depuis les documents Groupama (février 2026).
- * Gamme : Santé Active, 5 niveaux.
- * Ligne de garantie : "Petit appareillage / orthopédie".
+ * Données vérifiées depuis le PDF officiel Groupama (février 2026).
+ * Source : "Engagement lisibilité — Tableau de garanties 2024, Solution Groupama Santé Active"
+ * https://assets.ctfassets.net/7awcp71bzphk/1mUlfRYpqMU4KFzn7dBXZe/e68ae1977be42cc2329a30403cdc03eb/Tableau_de_garanties_2023_-publication_27_oct.pdf
  *
- * Note : Niveaux 1 et 5 sont des estimations déduites des niveaux confirmés
- * (2=130%, 3=150%, 4=200%). D'où confidenceScore à 0.5.
+ * Page 2, section "Matériel médical" (exemple : "Achat d'une paire de béquille").
+ * Les semelles orthopédiques relèvent de la même catégorie petit appareillage.
+ *
+ * Tous les 5 niveaux sont maintenant confirmés par le PDF officiel.
+ * Le Niveau 5 était précédemment estimé à 250% — la valeur réelle est 300%.
  */
 function getVerifiedData() {
   return buildScrapedEntry({
@@ -17,13 +20,13 @@ function getVerifiedData() {
       'Santé Active Niveau 2': { pourcentageBR: 130 },
       'Santé Active Niveau 3': { pourcentageBR: 150 },
       'Santé Active Niveau 4': { pourcentageBR: 200 },
-      'Santé Active Niveau 5': { pourcentageBR: 250 }
+      'Santé Active Niveau 5': { pourcentageBR: 300 }
     },
     forfaitAnnuel: null,
     frequence: '1 paire par an',
     conditions: 'Sur prescription médicale',
-    dataSource: 'scraped',
-    confidenceScore: 0.5
+    dataSource: 'official',
+    confidenceScore: 0.9
   });
 }
 

@@ -10,12 +10,13 @@ describe('GMF Scraper', () => {
       expect(data.frequence).toBe('1 paire par an');
     });
 
-    test('contient les 3 niveaux Santé Pass', () => {
+    test('contient les 4 niveaux Santé Pass', () => {
       const formules = Object.keys(data.formules);
-      expect(formules).toHaveLength(3);
+      expect(formules).toHaveLength(4);
       expect(formules).toContain('Santé Pass Niveau 1');
       expect(formules).toContain('Santé Pass Niveau 2');
       expect(formules).toContain('Santé Pass Niveau 3');
+      expect(formules).toContain('Santé Pass Niveau 4');
     });
 
     test('Niveau 1 rembourse à 100% BR', () => {
@@ -26,6 +27,10 @@ describe('GMF Scraper', () => {
       expect(data.formules['Santé Pass Niveau 3'].pourcentageBR).toBe(175);
     });
 
+    test('Niveau 4 rembourse à 220% BR', () => {
+      expect(data.formules['Santé Pass Niveau 4'].pourcentageBR).toBe(220);
+    });
+
     test('les pourcentages sont croissants', () => {
       const pcts = Object.values(data.formules).map(f => f.pourcentageBR);
       for (let i = 1; i < pcts.length; i++) {
@@ -33,8 +38,8 @@ describe('GMF Scraper', () => {
       }
     });
 
-    test('confidenceScore est faible (0.4) car source tiers uniquement', () => {
-      expect(data.confidenceScore).toBe(0.4);
+    test('confidenceScore est 0.6 (sources tiers confirmées)', () => {
+      expect(data.confidenceScore).toBe(0.6);
     });
 
     test('les champs de traçabilité sont renseignés', () => {

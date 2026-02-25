@@ -25,8 +25,8 @@ describe('Groupama Scraper', () => {
       expect(data.formules['Santé Active Niveau 2'].pourcentageBR).toBe(130);
     });
 
-    test('Niveau 5 rembourse à 250% BR', () => {
-      expect(data.formules['Santé Active Niveau 5'].pourcentageBR).toBe(250);
+    test('Niveau 5 rembourse à 300% BR', () => {
+      expect(data.formules['Santé Active Niveau 5'].pourcentageBR).toBe(300);
     });
 
     test('les pourcentages sont croissants', () => {
@@ -36,12 +36,12 @@ describe('Groupama Scraper', () => {
       }
     });
 
-    test('confidenceScore est 0.5 (niveaux 1 et 5 estimés)', () => {
-      expect(data.confidenceScore).toBe(0.5);
+    test('confidenceScore est 0.9 (PDF officiel Groupama)', () => {
+      expect(data.confidenceScore).toBe(0.9);
     });
 
     test('les champs de traçabilité sont renseignés', () => {
-      expect(data.dataSource).toBe('scraped');
+      expect(data.dataSource).toBe('official');
       expect(data.lastUpdated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     });
   });
@@ -59,8 +59,8 @@ describe('Groupama Scraper', () => {
       expect(jsonEntry.formules).toEqual(verified.formules);
     });
 
-    test('le dataSource est "scraped" dans le JSON', () => {
-      expect(jsonEntry.dataSource).toBe('scraped');
+    test('le dataSource est "official" dans le JSON', () => {
+      expect(jsonEntry.dataSource).toBe('official');
     });
 
     test('lastUpdated est renseigné dans le JSON', () => {
