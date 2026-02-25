@@ -73,21 +73,24 @@
         "pourcentageBR": 100
       },
       "Découverte": {
-        "pourcentageBR": 150
+        "pourcentageBR": 100
       },
       "Évolution": {
-        "pourcentageBR": 200
+        "pourcentageBR": 125
+      },
+      "Extension": {
+        "pourcentageBR": 150
       },
       "Optimale": {
-        "pourcentageBR": 300
+        "pourcentageBR": 150
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
-    "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "conditions": "Sur prescription médicale. Produit Efficience Santé distribué par MGEN Filia.",
+    "dataSource": "scraped",
+    "confidenceScore": 0.5,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "Malakoff Humanis",
