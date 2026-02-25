@@ -10,14 +10,39 @@ describe('AXA Scraper', () => {
       expect(data.frequence).toBe('1 paire par an');
     });
 
-    test('contient les 5 formules Modulango', () => {
+    test('contient les 6 formules Ma Santé (hors Hospi Tradi non couverte)', () => {
       const formules = Object.keys(data.formules);
-      expect(formules).toHaveLength(5);
-      expect(formules).toContain('Modulango 100');
-      expect(formules).toContain('Modulango 125');
-      expect(formules).toContain('Modulango 150');
-      expect(formules).toContain('Modulango 200');
-      expect(formules).toContain('Modulango 400');
+      expect(formules).toHaveLength(6);
+      expect(formules).toContain('Ma Santé Eco Tradi');
+      expect(formules).toContain('Ma Santé 100% Néo');
+      expect(formules).toContain('Ma Santé 125% Néo');
+      expect(formules).toContain('Ma Santé 150% Néo');
+      expect(formules).toContain('Ma Santé 200% Néo');
+      expect(formules).toContain('Ma Santé 400% Tradi');
+    });
+
+    test('Eco Tradi rembourse à 95% BR', () => {
+      expect(data.formules['Ma Santé Eco Tradi'].pourcentageBR).toBe(95);
+    });
+
+    test('100% Néo rembourse à 100% BR', () => {
+      expect(data.formules['Ma Santé 100% Néo'].pourcentageBR).toBe(100);
+    });
+
+    test('125% Néo rembourse à 125% BR', () => {
+      expect(data.formules['Ma Santé 125% Néo'].pourcentageBR).toBe(125);
+    });
+
+    test('150% Néo rembourse à 150% BR', () => {
+      expect(data.formules['Ma Santé 150% Néo'].pourcentageBR).toBe(150);
+    });
+
+    test('200% Néo rembourse à 200% BR', () => {
+      expect(data.formules['Ma Santé 200% Néo'].pourcentageBR).toBe(200);
+    });
+
+    test('400% Tradi rembourse à 400% BR', () => {
+      expect(data.formules['Ma Santé 400% Tradi'].pourcentageBR).toBe(400);
     });
 
     test('les pourcentages sont croissants', () => {
@@ -27,12 +52,10 @@ describe('AXA Scraper', () => {
       }
     });
 
-    test('confidenceScore reflète l\'incertitude (données déduites des noms de formules)', () => {
-      expect(data.dataSource).toBe('estimated');
-      expect(data.confidenceScore).toBeLessThanOrEqual(0.5);
-    });
-
-    test('lastUpdated est renseigné', () => {
+    test('les champs de traçabilité sont renseignés', () => {
+      expect(data.dataSource).toBe('scraped');
+      expect(data.confidenceScore).toBeGreaterThanOrEqual(0.5);
+      expect(data.confidenceScore).toBeLessThanOrEqual(1.0);
       expect(data.lastUpdated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     });
   });
@@ -50,7 +73,15 @@ describe('AXA Scraper', () => {
       expect(axaJson.formules).toEqual(verified.formules);
     });
 
-    test('lastUpdated est renseigné', () => {
+    test('le dataSource est "scraped" dans le JSON', () => {
+      expect(axaJson.dataSource).toBe('scraped');
+    });
+
+    test('le confidenceScore est >= 0.5 dans le JSON', () => {
+      expect(axaJson.confidenceScore).toBeGreaterThanOrEqual(0.5);
+    });
+
+    test('lastUpdated est renseigné dans le JSON', () => {
       expect(axaJson.lastUpdated).not.toBeNull();
     });
   });

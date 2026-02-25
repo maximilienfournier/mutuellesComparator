@@ -1,40 +1,39 @@
 const { buildScrapedEntry } = require('./utils');
 
 /**
- * Données pour AXA Modulango — semelles orthopédiques (petit appareillage).
+ * Données vérifiées depuis les PDFs officiels AXA "Ma Santé" (février 2026).
+ * Le produit actuel s'appelle "Ma Santé" (ex-Modulango).
+ * Ligne de garantie : "Prothèses, pansements, petits matériels et autres produits
+ * définis sur la LPP (hors lunettes et aides auditives)".
  *
- * AXA propose les formules MaSanté (ex-Modulango) : Eco, 100%, 125%, 150%, 200%, 400%.
- * Les noms de formule indiquent le taux de remboursement général appliqué aux soins courants.
- * Les PDFs officiels de tableaux de garanties ne sont pas lisibles en scraping (binaires compressés).
- * Les pages web axa.mon-assurance.fr renvoient des 404.
+ * Sources par formule (PDFs tableaux de garanties sur media.axa.fr) :
+ * - Hospi Tradi : https://media.axa.fr/content/dam/axa-fr/image/particuliers/sante/document-pdf/tableau-garanties-ma-sante-hospi-tradi.pdf — non couvert, lu directement
+ * - Eco Tradi : https://media.axa.fr/content/dam/axa-fr/image/particuliers/sante/document-pdf/tableau-garanties-ma-sante-eco-tradi.pdf — 95% BR, lu directement
+ * - 100% Néo : https://media.axa.fr/content/dam/axa-fr/image/particuliers/sante/document-pdf/tableau-garanties-ma-sante-100-neo.pdf — 100% BR, lu directement
+ * - 125% Néo : https://media.axa.fr/content/dam/axa-fr/image/particuliers/sante/document-pdf/tableau-garanties-ma-sante-125-neo.pdf — 125% BR, lu directement
+ * - 150% Néo : https://media.axa.fr/content/dam/axa-fr/image/particuliers/sante/document-pdf/tableau-garanties-ma-sante-150-neo.pdf — 150% BR, lu directement
+ * - 200% Néo : https://media.axa.fr/content/dam/axa-fr/image/particuliers/sante/document-pdf/tableau-garanties-ma-sante-200-neo.pdf — 200% BR, lu directement
+ * - 400% Tradi : https://media.axa.fr/content/dam/axa-fr/image/particuliers/sante/document-pdf/tableau-garanties-ma-sante-400-tradi.pdf — 400% BR, lu directement
  *
- * Sources et certitudes par formule :
- * - Modulango 100 : nom de formule indique 100% BR, corroboré par description "remboursement à 100% des tarifs conventionnés" — déduit, 0.5
- * - Modulango 125 : nom indique 125% BR, corroboré par "125% remboursement audition et appareillages" — déduit, 0.5
- * - Modulango 150 : nom indique 150% BR, corroboré par "150% remboursement audition et appareillages" — déduit, 0.5
- * - Modulango 200 : nom indique 200% BR — déduit, 0.5
- * - Modulango 400 : nom indique 400% BR — déduit, 0.4
- *
- * Note : les % réels pour "petit appareillage" peuvent différer du % général de la formule.
- * Le PDF officiel est à https://www.maaf.fr/fr/files/live/sites/maaf/... mais illisible en scraping.
- * Vérification humaine recommandée.
+ * Note : Hospi Tradi exclue car ne couvre pas le petit appareillage.
  */
 function getVerifiedData() {
   return buildScrapedEntry({
     nom: 'AXA',
     siren: '310499959',
     formules: {
-      'Modulango 100': { pourcentageBR: 100 },
-      'Modulango 125': { pourcentageBR: 125 },
-      'Modulango 150': { pourcentageBR: 150 },
-      'Modulango 200': { pourcentageBR: 200 },
-      'Modulango 400': { pourcentageBR: 400 }
+      'Ma Santé Eco Tradi': { pourcentageBR: 95 },
+      'Ma Santé 100% Néo': { pourcentageBR: 100 },
+      'Ma Santé 125% Néo': { pourcentageBR: 125 },
+      'Ma Santé 150% Néo': { pourcentageBR: 150 },
+      'Ma Santé 200% Néo': { pourcentageBR: 200 },
+      'Ma Santé 400% Tradi': { pourcentageBR: 400 }
     },
     forfaitAnnuel: null,
     frequence: '1 paire par an',
-    conditions: 'Sur prescription médicale',
-    dataSource: 'estimated',
-    confidenceScore: 0.4
+    conditions: 'Sur prescription médicale. Formule Hospi Tradi non couverte pour le petit appareillage.',
+    dataSource: 'scraped',
+    confidenceScore: 0.8
   });
 }
 
