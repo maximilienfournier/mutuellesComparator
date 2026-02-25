@@ -228,43 +228,31 @@
     "nom": "Generali",
     "siren": "552062663",
     "formules": {
-      "Niveau 1": {
-        "pourcentageBR": 125
-      },
-      "Niveau 3": {
-        "pourcentageBR": 200
-      },
-      "Niveau 5": {
-        "pourcentageBR": 300
-      }
-    },
-    "forfaitAnnuel": null,
-    "frequence": "1 paire par an",
-    "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
-  },
-  {
-    "nom": "April",
-    "siren": "377437694",
-    "formules": {
-      "Essentiel": {
+      "Santé Pro P0": {
         "pourcentageBR": 100
       },
-      "Confort": {
-        "pourcentageBR": 250
+      "Santé Pro P1": {
+        "pourcentageBR": 100
       },
-      "Premium": {
+      "Santé Pro P2": {
+        "pourcentageBR": 150
+      },
+      "Santé Pro P3": {
+        "pourcentageBR": 200
+      },
+      "Santé Pro P4": {
+        "pourcentageBR": 300
+      },
+      "Santé Pro P5": {
         "pourcentageBR": 500
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.7,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "Macif (Apivia)",
@@ -333,43 +321,64 @@
     "nom": "Allianz France",
     "siren": "303265128",
     "formules": {
-      "Composio Essentiel": {
+      "Composio Eco": {
         "pourcentageBR": 100
       },
-      "Composio Équilibre": {
-        "pourcentageBR": 200
-      },
-      "Composio Confort": {
-        "pourcentageBR": 350
-      }
-    },
-    "forfaitAnnuel": null,
-    "frequence": "1 paire par an",
-    "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
-  },
-  {
-    "nom": "Pro BTP",
-    "siren": "784621468",
-    "formules": {
-      "S1 Essentiel": {
+      "Composio Niveau 1": {
         "pourcentageBR": 100
       },
-      "S2 Confort": {
+      "Composio Niveau 2": {
+        "pourcentageBR": 100
+      },
+      "Composio Niveau 3": {
+        "pourcentageBR": 125
+      },
+      "Composio Niveau 4": {
+        "pourcentageBR": 150
+      },
+      "Composio Niveau 5": {
         "pourcentageBR": 200
       },
-      "S3 Premium": {
+      "Composio Niveau 6": {
         "pourcentageBR": 300
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.7,
+    "lastUpdated": "2026-02-25"
+  },
+  {
+    "nom": "Pro BTP",
+    "siren": "784621468",
+    "formules": {
+      "S1": {
+        "pourcentageBR": 60
+      },
+      "S2": {
+        "pourcentageBR": 100
+      },
+      "S3": {
+        "pourcentageBR": 250
+      },
+      "S4": {
+        "pourcentageBR": 350
+      },
+      "S5": {
+        "pourcentageBR": 500
+      },
+      "S6": {
+        "pourcentageBR": 550
+      }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale",
+    "dataSource": "scraped",
+    "confidenceScore": 0.6,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "MNT",
@@ -447,22 +456,37 @@
     "nom": "Crédit Mutuel (ACM)",
     "siren": "353073075",
     "formules": {
-      "Primo": {
-        "pourcentageBR": 100
+      "Niveau 1": {
+        "pourcentageBR": 100,
+        "forfaitAnnuel": 0
       },
-      "Modulo 2": {
-        "pourcentageBR": 200
+      "Niveau 2": {
+        "pourcentageBR": 100,
+        "forfaitAnnuel": 75
       },
-      "Modulo 3": {
-        "pourcentageBR": 300
+      "Niveau 3": {
+        "pourcentageBR": 100,
+        "forfaitAnnuel": 100
+      },
+      "Niveau 4": {
+        "pourcentageBR": 100,
+        "forfaitAnnuel": 150
+      },
+      "Niveau 5": {
+        "pourcentageBR": 100,
+        "forfaitAnnuel": 225
+      },
+      "Niveau 6": {
+        "pourcentageBR": 100,
+        "forfaitAnnuel": 300
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.9,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "MGEFI",
@@ -523,24 +547,28 @@
     "siren": "529168007",
     "formules": {
       "Essentiel": {
-        "pourcentageBR": 100
+        "pourcentageBR": 100,
+        "forfaitAnnuel": 0
       },
       "Équilibre": {
-        "pourcentageBR": 150
+        "pourcentageBR": 150,
+        "forfaitAnnuel": 100
       },
       "Confort": {
-        "pourcentageBR": 200
+        "pourcentageBR": 200,
+        "forfaitAnnuel": 150
       },
       "Premium": {
-        "pourcentageBR": 300
+        "pourcentageBR": 300,
+        "forfaitAnnuel": 300
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.9,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "Swiss Life",
@@ -579,6 +607,39 @@
     "conditions": "Sur prescription médicale",
     "dataSource": "scraped",
     "confidenceScore": 0.9,
+    "lastUpdated": "2026-02-25"
+  },
+  {
+    "nom": "April",
+    "siren": "378724530",
+    "formules": {
+      "Santé Mix N1": {
+        "pourcentageBR": 100
+      },
+      "Santé Mix N2": {
+        "pourcentageBR": 100
+      },
+      "Santé Mix N3": {
+        "pourcentageBR": 125
+      },
+      "Santé Mix N4": {
+        "pourcentageBR": 150
+      },
+      "Santé Mix N5": {
+        "pourcentageBR": 175
+      },
+      "Santé Mix N6": {
+        "pourcentageBR": 200
+      },
+      "Santé Mix N7": {
+        "pourcentageBR": 300
+      }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale",
+    "dataSource": "scraped",
+    "confidenceScore": 0.7,
     "lastUpdated": "2026-02-25"
   }
 ]
