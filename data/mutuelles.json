@@ -150,22 +150,28 @@
     "nom": "Groupama",
     "siren": "343115135",
     "formules": {
-      "Santé Active 2": {
+      "Santé Active Niveau 1": {
+        "pourcentageBR": 100
+      },
+      "Santé Active Niveau 2": {
         "pourcentageBR": 130
       },
-      "Santé Active 3": {
+      "Santé Active Niveau 3": {
         "pourcentageBR": 150
       },
-      "Santé Active 4": {
+      "Santé Active Niveau 4": {
         "pourcentageBR": 200
+      },
+      "Santé Active Niveau 5": {
+        "pourcentageBR": 250
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.5,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "MAAF",
@@ -255,67 +261,52 @@
     "lastUpdated": "2026-02-25"
   },
   {
-    "nom": "Macif (Apivia)",
-    "siren": "780435988",
-    "formules": {
-      "Vitamin V1": {
-        "pourcentageBR": 100
-      },
-      "Vitamin V3": {
-        "pourcentageBR": 150
-      },
-      "Vitamin V5": {
-        "pourcentageBR": 200
-      }
-    },
-    "forfaitAnnuel": null,
-    "frequence": "1 paire par an",
-    "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
-  },
-  {
     "nom": "MMA",
     "siren": "440048882",
     "formules": {
-      "Santé Éco": {
-        "pourcentageBR": 100
+      "Famille Niveau 1": {
+        "pourcentageBR": 125
       },
-      "Santé Plus": {
+      "Vitale Niveau 4": {
+        "pourcentageBR": 150
+      },
+      "Essentielle Niveau 4": {
         "pourcentageBR": 200
       },
-      "Santé Premium": {
+      "Famille Niveau 3": {
+        "pourcentageBR": 200
+      },
+      "Famille Niveau 4": {
         "pourcentageBR": 300
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.8,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "GMF",
     "siren": "398972901",
     "formules": {
-      "Santé Pass 1": {
+      "Santé Pass Niveau 1": {
         "pourcentageBR": 100
       },
-      "Santé Pass 2": {
-        "pourcentageBR": 150
+      "Santé Pass Niveau 2": {
+        "pourcentageBR": 125
       },
-      "Santé Pass 3": {
-        "pourcentageBR": 250
+      "Santé Pass Niveau 3": {
+        "pourcentageBR": 175
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.4,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "Allianz France",
@@ -411,22 +402,22 @@
     "nom": "Aésio Mutuelle",
     "siren": "775627391",
     "formules": {
-      "Essentiel": {
-        "pourcentageBR": 100
-      },
-      "Medium": {
+      "Santé Particuliers N3": {
         "pourcentageBR": 150
       },
-      "Confort": {
-        "pourcentageBR": 200
+      "Santé Pro N5": {
+        "pourcentageBR": 350
+      },
+      "Santé Pro N6": {
+        "pourcentageBR": 500
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.7,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "La Mutuelle Générale",
@@ -640,6 +631,33 @@
     "conditions": "Sur prescription médicale",
     "dataSource": "scraped",
     "confidenceScore": 0.7,
+    "lastUpdated": "2026-02-25"
+  },
+  {
+    "nom": "Macif (Apivia)",
+    "siren": "779558501",
+    "formules": {
+      "Vitamin V1": {
+        "pourcentageBR": 100
+      },
+      "Vitamin V2": {
+        "pourcentageBR": 125
+      },
+      "Vitamin V3": {
+        "pourcentageBR": 150
+      },
+      "Vitamin V4": {
+        "pourcentageBR": 175
+      },
+      "Vitamin V5": {
+        "pourcentageBR": 200
+      }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale",
+    "dataSource": "scraped",
+    "confidenceScore": 0.5,
     "lastUpdated": "2026-02-25"
   }
 ]
