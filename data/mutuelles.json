@@ -123,43 +123,28 @@
     "nom": "AG2R La Mondiale",
     "siren": "486197757",
     "formules": {
-      "Indice 60": {
+      "Protecvia Indice 30": {
         "pourcentageBR": 100
       },
-      "Indice 90": {
+      "Protecvia Indice 45": {
+        "pourcentageBR": 125
+      },
+      "Protecvia Indice 60": {
+        "pourcentageBR": 150
+      },
+      "Protecvia Indice 90": {
         "pourcentageBR": 200
       },
-      "Indice 120": {
-        "pourcentageBR": 500
-      }
-    },
-    "forfaitAnnuel": null,
-    "frequence": "1 paire par an",
-    "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
-  },
-  {
-    "nom": "Swiss Life",
-    "siren": "341785840",
-    "formules": {
-      "Niveau 1": {
-        "pourcentageBR": 100
-      },
-      "Niveau 4": {
+      "Protecvia Indice 120": {
         "pourcentageBR": 250
-      },
-      "Niveau 8": {
-        "pourcentageBR": 400
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.7,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "Groupama",
@@ -390,22 +375,28 @@
     "nom": "MNT",
     "siren": "775678584",
     "formules": {
-      "Intégrale Santé S1": {
+      "Essentielle": {
         "pourcentageBR": 100
       },
-      "Intégrale Santé S2": {
-        "pourcentageBR": 200
+      "Équilibre": {
+        "pourcentageBR": 100
       },
-      "Intégrale Santé S3": {
-        "pourcentageBR": 300
+      "Confort": {
+        "pourcentageBR": 160
+      },
+      "Optimale": {
+        "pourcentageBR": 160
+      },
+      "Intégrale": {
+        "pourcentageBR": 210
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
-    "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "conditions": "Sur prescription médicale. Distribué via MGEN.",
+    "dataSource": "scraped",
+    "confidenceScore": 0.7,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "Aésio Mutuelle",
@@ -432,22 +423,25 @@
     "nom": "La Mutuelle Générale",
     "siren": "775685340",
     "formules": {
-      "Référence": {
+      "Itineo Eco": {
         "pourcentageBR": 100
       },
-      "Essentiel+": {
-        "pourcentageBR": 200
+      "Itineo Essentiel": {
+        "pourcentageBR": 100
       },
-      "Intégral": {
-        "pourcentageBR": 300
+      "Itineo Renfort": {
+        "pourcentageBR": 100
+      },
+      "Itineo Exigence": {
+        "pourcentageBR": 115
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.7,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "Crédit Mutuel (ACM)",
@@ -474,40 +468,55 @@
     "nom": "MGEFI",
     "siren": "499982098",
     "formules": {
-      "Maitri Santé": {
+      "Mgéfi Maitri": {
         "pourcentageBR": 100
       },
-      "Multi Santé 2": {
+      "Mgéfi Vita 2": {
+        "pourcentageBR": 200
+      },
+      "Mgéfi Multi 2": {
         "pourcentageBR": 200
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.9,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "Henner",
     "siren": "323377739",
     "formules": {
-      "Formule 2": {
+      "Privilèges F1": {
         "pourcentageBR": 100
       },
-      "Formule 4": {
+      "Privilèges F2": {
+        "pourcentageBR": 120
+      },
+      "Privilèges F3": {
+        "pourcentageBR": 150
+      },
+      "Privilèges F4": {
+        "pourcentageBR": 170
+      },
+      "Privilèges F5": {
         "pourcentageBR": 200
       },
-      "Formule 6": {
+      "Privilèges F6": {
+        "pourcentageBR": 250
+      },
+      "Privilèges F7": {
         "pourcentageBR": 300
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.8,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "Klesia",
@@ -532,5 +541,44 @@
     "dataSource": "estimated",
     "confidenceScore": 0.2,
     "lastUpdated": null
+  },
+  {
+    "nom": "Swiss Life",
+    "siren": "322215021",
+    "formules": {
+      "Niveau 1": {
+        "pourcentageBR": 100
+      },
+      "Niveau 2": {
+        "pourcentageBR": 100
+      },
+      "Niveau 3": {
+        "pourcentageBR": 125
+      },
+      "Niveau 4": {
+        "pourcentageBR": 150
+      },
+      "Niveau 5": {
+        "pourcentageBR": 175
+      },
+      "Niveau 6": {
+        "pourcentageBR": 200
+      },
+      "Niveau 7": {
+        "pourcentageBR": 250
+      },
+      "Niveau 8": {
+        "pourcentageBR": 300
+      },
+      "Niveau 9": {
+        "pourcentageBR": 400
+      }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale",
+    "dataSource": "scraped",
+    "confidenceScore": 0.9,
+    "lastUpdated": "2026-02-25"
   }
 ]
