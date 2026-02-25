@@ -6,11 +6,11 @@ describe('Crédit Mutuel (ACM) Scraper', () => {
 
     test('retourne les métadonnées correctes', () => {
       expect(data.nom).toBe('Crédit Mutuel (ACM)');
-      expect(data.siren).toBe('353073075');
+      expect(data.siren).toBe('352406748');
       expect(data.frequence).toBe('1 paire par an');
     });
 
-    test('contient les 5 formules officielles', () => {
+    test('contient les 5 niveaux officiels', () => {
       const formules = Object.keys(data.formules);
       expect(formules).toHaveLength(5);
       expect(formules).toContain('Primo');
@@ -35,6 +35,18 @@ describe('Crédit Mutuel (ACM) Scraper', () => {
 
     test('Primo a un forfait de 0€', () => {
       expect(data.formules['Primo'].forfaitAnnuel).toBe(0);
+    });
+
+    test('Niveau 15 a un forfait de 75€', () => {
+      expect(data.formules['Niveau 15'].forfaitAnnuel).toBe(75);
+    });
+
+    test('Niveau 20 a un forfait de 100€', () => {
+      expect(data.formules['Niveau 20'].forfaitAnnuel).toBe(100);
+    });
+
+    test('Niveau 30 a un forfait de 150€', () => {
+      expect(data.formules['Niveau 30'].forfaitAnnuel).toBe(150);
     });
 
     test('Niveau 40 a un forfait de 225€', () => {
@@ -63,6 +75,10 @@ describe('Crédit Mutuel (ACM) Scraper', () => {
 
     test('le dataSource est "official" dans le JSON', () => {
       expect(jsonEntry.dataSource).toBe('official');
+    });
+
+    test('le SIREN est correct dans le JSON', () => {
+      expect(jsonEntry.siren).toBe('352406748');
     });
 
     test('lastUpdated est renseigné dans le JSON', () => {
