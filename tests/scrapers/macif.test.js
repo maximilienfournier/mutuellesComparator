@@ -37,8 +37,8 @@ describe('Macif (Apivia) Scraper', () => {
     });
 
     test('les champs de traçabilité sont renseignés', () => {
-      expect(data.dataSource).toBe('scraped');
-      expect(data.confidenceScore).toBeGreaterThanOrEqual(0.4);
+      expect(data.dataSource).toBe('official');
+      expect(data.confidenceScore).toBeGreaterThanOrEqual(0.5);
       expect(data.lastUpdated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     });
   });
@@ -60,8 +60,8 @@ describe('Macif (Apivia) Scraper', () => {
       expect(jsonEntry.siren).toBe('779558501');
     });
 
-    test('le dataSource est "scraped" dans le JSON', () => {
-      expect(jsonEntry.dataSource).toBe('scraped');
+    test('le dataSource est "official" dans le JSON', () => {
+      expect(jsonEntry.dataSource).toBe('official');
     });
 
     test('lastUpdated est renseigné dans le JSON', () => {

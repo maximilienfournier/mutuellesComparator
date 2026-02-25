@@ -72,17 +72,20 @@ async function scrapeMAIF() {
 }
 
 /**
- * Données vérifiées manuellement depuis les pages MGEN Efficience Santé (février 2026).
+ * Données vérifiées depuis le PDF officiel MAIF Efficience Santé (février 2026).
+ * Source : "Extrait des prestations et services proposés" hébergé sur maif.fr.
+ * https://www.maif.fr/files/live/sites/maif-fr/files/pdf/documentation-contractuelle/famille-vie-quotidienne/efficience-sante/extrait-prestations-services-efficience-sante.pdf
  *
- * Sources par formule :
- * - Essentielle : page mgen.fr/efficience-sante-essentielle — semelles non affichées, déduit 100% BR (ticket modérateur)
- * - Découverte : résultat de recherche mentionnant "40% de participation mutuelle" — déduit 100% BR total
- * - Évolution : page mgen.fr/efficience-sante-evolution — semelles non affichées, estimé entre Découverte et Extension
- * - Extension : résultat de recherche mentionnant "90% de participation" — déduit 150% BR total
- * - Optimale : https://www.mgen.fr/offres-sante-prevoyance/efficience-sante/efficience-sante-optimale/ — "Total: 150%" lu directement
+ * Ligne de garantie (page 2/8, section MATÉRIEL MÉDICAL) :
+ * "Accessoires et pansements, petit appareillage et orthopédie"
  *
- * Note : MAIF distribue le produit "Efficience Santé" de MGEN Filia.
- * Les formules MAIF sont différentes des formules MGEN Santé Prévoyance (Initiale/Référence/Intégrale).
+ * Résultat : Essentielle/Découverte/Évolution/Extension = 100% BR, Optimale = 150% BR.
+ * Confirmé aussi par le tableau Alsace-Moselle de comparateur-assurances.net.
+ *
+ * Note : les anciennes valeurs Évolution=125% et Extension=150% étaient surestimées.
+ * La confusion venait de la ligne "Autres prothèses" qui a un profil différent.
+ *
+ * MAIF distribue le produit "Efficience Santé" de MGEN Filia.
  */
 function getVerifiedData() {
   return {
@@ -91,16 +94,16 @@ function getVerifiedData() {
     formules: {
       'Essentielle': { pourcentageBR: 100 },
       'Découverte': { pourcentageBR: 100 },
-      'Évolution': { pourcentageBR: 125 },
-      'Extension': { pourcentageBR: 150 },
+      'Évolution': { pourcentageBR: 100 },
+      'Extension': { pourcentageBR: 100 },
       'Optimale': { pourcentageBR: 150 }
     },
     forfaitAnnuel: null,
     frequence: '1 paire par an',
-    conditions: 'Sur prescription médicale',
-    dataSource: 'scraped',
-    confidenceScore: 0.5,
-    lastUpdated: '2026-02-25'
+    conditions: 'Sur prescription médicale. Produit Efficience Santé distribué par MGEN Filia.',
+    dataSource: 'official',
+    confidenceScore: 0.85,
+    lastUpdated: new Date().toISOString().split('T')[0]
   };
 }
 

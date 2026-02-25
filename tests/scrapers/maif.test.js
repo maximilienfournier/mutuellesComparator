@@ -20,12 +20,15 @@ describe('MAIF Scraper', () => {
       expect(formules).toContain('Optimale');
     });
 
-    test('Optimale rembourse à 150% BR (confirmé sur mgen.fr)', () => {
-      expect(data.formules['Optimale'].pourcentageBR).toBe(150);
+    test('Essentielle à Évolution et Extension remboursent à 100% BR', () => {
+      expect(data.formules['Essentielle'].pourcentageBR).toBe(100);
+      expect(data.formules['Découverte'].pourcentageBR).toBe(100);
+      expect(data.formules['Évolution'].pourcentageBR).toBe(100);
+      expect(data.formules['Extension'].pourcentageBR).toBe(100);
     });
 
-    test('Extension rembourse à 150% BR', () => {
-      expect(data.formules['Extension'].pourcentageBR).toBe(150);
+    test('Optimale rembourse à 150% BR (seule formule supérieure)', () => {
+      expect(data.formules['Optimale'].pourcentageBR).toBe(150);
     });
 
     test('les pourcentages sont cohérents (ordre croissant)', () => {
@@ -36,15 +39,9 @@ describe('MAIF Scraper', () => {
     });
 
     test('les champs de traçabilité sont renseignés', () => {
-      expect(data.dataSource).toBe('scraped');
-      expect(data.confidenceScore).toBeGreaterThanOrEqual(0.4);
-      expect(data.confidenceScore).toBeLessThanOrEqual(1.0);
+      expect(data.dataSource).toBe('official');
+      expect(data.confidenceScore).toBe(0.85);
       expect(data.lastUpdated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-    });
-
-    test('confidenceScore reflète l\'incertitude (< 0.8)', () => {
-      // Seule Optimale est confirmée, les autres sont déduites
-      expect(data.confidenceScore).toBeLessThan(0.8);
     });
   });
 
@@ -73,8 +70,8 @@ describe('MAIF Scraper', () => {
       expect(maifJson.formules).toEqual(verified.formules);
     });
 
-    test('le dataSource est "scraped" dans le JSON', () => {
-      expect(maifJson.dataSource).toBe('scraped');
+    test('le dataSource est "official" dans le JSON', () => {
+      expect(maifJson.dataSource).toBe('official');
     });
 
     test('lastUpdated est renseigné dans le JSON', () => {

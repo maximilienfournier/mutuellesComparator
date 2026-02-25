@@ -48,21 +48,21 @@
     "nom": "Alan",
     "siren": "813369193",
     "formules": {
-      "Blue": {
-        "pourcentageBR": 250
-      },
       "Green": {
-        "pourcentageBR": 200
+        "pourcentageBR": 300
+      },
+      "Blue": {
+        "pourcentageBR": 400
       },
       "Purple": {
-        "pourcentageBR": 300
+        "pourcentageBR": 500
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
+    "dataSource": "scraped",
+    "confidenceScore": 0.8,
     "lastUpdated": "2026-02-25"
   },
   {
@@ -76,10 +76,10 @@
         "pourcentageBR": 100
       },
       "Évolution": {
-        "pourcentageBR": 125
+        "pourcentageBR": 100
       },
       "Extension": {
-        "pourcentageBR": 150
+        "pourcentageBR": 100
       },
       "Optimale": {
         "pourcentageBR": 150
@@ -88,8 +88,8 @@
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale. Produit Efficience Santé distribué par MGEN Filia.",
-    "dataSource": "scraped",
-    "confidenceScore": 0.5,
+    "dataSource": "official",
+    "confidenceScore": 0.85,
     "lastUpdated": "2026-02-25"
   },
   {
@@ -163,14 +163,14 @@
         "pourcentageBR": 200
       },
       "Santé Active Niveau 5": {
-        "pourcentageBR": 250
+        "pourcentageBR": 300
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "scraped",
-    "confidenceScore": 0.5,
+    "dataSource": "official",
+    "confidenceScore": 0.9,
     "lastUpdated": "2026-02-25"
   },
   {
@@ -299,13 +299,16 @@
       },
       "Santé Pass Niveau 3": {
         "pourcentageBR": 175
+      },
+      "Santé Pass Niveau 4": {
+        "pourcentageBR": 220
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
-    "conditions": "Sur prescription médicale",
+    "conditions": "Sur prescription médicale. Plafond matériel médical 3000€/an au niveau 4.",
     "dataSource": "scraped",
-    "confidenceScore": 0.4,
+    "confidenceScore": 0.6,
     "lastUpdated": "2026-02-25"
   },
   {
@@ -656,8 +659,8 @@
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "scraped",
-    "confidenceScore": 0.5,
+    "dataSource": "official",
+    "confidenceScore": 0.9,
     "lastUpdated": "2026-02-25"
   }
 ]
