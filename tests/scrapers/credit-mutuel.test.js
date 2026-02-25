@@ -10,11 +10,14 @@ describe('Crédit Mutuel (ACM) Scraper', () => {
       expect(data.frequence).toBe('1 paire par an');
     });
 
-    test('contient les 6 niveaux', () => {
+    test('contient les 5 formules officielles', () => {
       const formules = Object.keys(data.formules);
-      expect(formules).toHaveLength(6);
-      expect(formules).toContain('Niveau 1');
-      expect(formules).toContain('Niveau 6');
+      expect(formules).toHaveLength(5);
+      expect(formules).toContain('Primo');
+      expect(formules).toContain('Niveau 15');
+      expect(formules).toContain('Niveau 20');
+      expect(formules).toContain('Niveau 30');
+      expect(formules).toContain('Niveau 40');
     });
 
     test('tous les niveaux remboursent à 100% BR', () => {
@@ -30,17 +33,17 @@ describe('Crédit Mutuel (ACM) Scraper', () => {
       }
     });
 
-    test('Niveau 1 a un forfait de 0€', () => {
-      expect(data.formules['Niveau 1'].forfaitAnnuel).toBe(0);
+    test('Primo a un forfait de 0€', () => {
+      expect(data.formules['Primo'].forfaitAnnuel).toBe(0);
     });
 
-    test('Niveau 6 a un forfait de 300€', () => {
-      expect(data.formules['Niveau 6'].forfaitAnnuel).toBe(300);
+    test('Niveau 40 a un forfait de 225€', () => {
+      expect(data.formules['Niveau 40'].forfaitAnnuel).toBe(225);
     });
 
     test('les champs de traçabilité sont renseignés', () => {
-      expect(data.dataSource).toBe('scraped');
-      expect(data.confidenceScore).toBeGreaterThanOrEqual(0.5);
+      expect(data.dataSource).toBe('official');
+      expect(data.confidenceScore).toBeGreaterThanOrEqual(0.9);
       expect(data.lastUpdated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     });
   });
@@ -58,8 +61,8 @@ describe('Crédit Mutuel (ACM) Scraper', () => {
       expect(jsonEntry.formules).toEqual(verified.formules);
     });
 
-    test('le dataSource est "scraped" dans le JSON', () => {
-      expect(jsonEntry.dataSource).toBe('scraped');
+    test('le dataSource est "official" dans le JSON', () => {
+      expect(jsonEntry.dataSource).toBe('official');
     });
 
     test('lastUpdated est renseigné dans le JSON', () => {
