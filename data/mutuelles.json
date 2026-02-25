@@ -550,8 +550,8 @@
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "scraped",
-    "confidenceScore": 0.8,
+    "dataSource": "official",
+    "confidenceScore": 0.9,
     "lastUpdated": "2026-02-25"
   },
   {
