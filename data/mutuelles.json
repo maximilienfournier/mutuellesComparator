@@ -157,5 +157,65 @@
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "MMA",
+    "siren": "440048882",
+    "formules": {
+      "Santé Éco": { "pourcentageBR": 100 },
+      "Santé Plus": { "pourcentageBR": 200 },
+      "Santé Premium": { "pourcentageBR": 300 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "GMF",
+    "siren": "398972901",
+    "formules": {
+      "Santé Pass 1": { "pourcentageBR": 100 },
+      "Santé Pass 2": { "pourcentageBR": 150 },
+      "Santé Pass 3": { "pourcentageBR": 250 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "Allianz France",
+    "siren": "303265128",
+    "formules": {
+      "Composio Essentiel": { "pourcentageBR": 100 },
+      "Composio Équilibre": { "pourcentageBR": 200 },
+      "Composio Confort": { "pourcentageBR": 350 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "Pro BTP",
+    "siren": "784621468",
+    "formules": {
+      "S1 Essentiel": { "pourcentageBR": 100 },
+      "S2 Confort": { "pourcentageBR": 200 },
+      "S3 Premium": { "pourcentageBR": 300 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
+  },
+  {
+    "nom": "MNT",
+    "siren": "775678584",
+    "formules": {
+      "Intégrale Santé S1": { "pourcentageBR": 100 },
+      "Intégrale Santé S2": { "pourcentageBR": 200 },
+      "Intégrale Santé S3": { "pourcentageBR": 300 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale"
   }
 ]
