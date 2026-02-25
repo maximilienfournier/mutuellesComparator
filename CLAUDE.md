@@ -51,9 +51,25 @@ mutuellesComparator/
   },
   "forfaitAnnuel": null,
   "frequence": "1 paire par an",
-  "conditions": "Sur prescription médicale"
+  "conditions": "Sur prescription médicale",
+  "dataSource": "estimated",
+  "confidenceScore": 0.2,
+  "lastUpdated": null
 }
 ```
+
+## Fiabilité des données
+
+Chaque mutuelle porte 3 champs de traçabilité :
+- `dataSource` : `"estimated"` (inventé), `"scraped"` (scrapé depuis le site), `"official"` (source officielle/PDF)
+- `confidenceScore` : `0.0` à `1.0` — fiabilité des %BR et formules
+- `lastUpdated` : date ISO de la dernière mise à jour, `null` si jamais vérifié
+
+| dataSource | confidenceScore typique | Signification |
+|---|---|---|
+| `estimated` | 0.1 – 0.3 | Données inventées, non vérifiées |
+| `scraped` | 0.5 – 0.8 | Scrapé depuis le site web, peut être obsolète |
+| `official` | 0.9 – 1.0 | Source officielle (PDF tableau de garanties, API) |
 
 ## Constantes
 
