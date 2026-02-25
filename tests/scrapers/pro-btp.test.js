@@ -10,23 +10,31 @@ describe('Pro BTP Scraper', () => {
       expect(data.frequence).toBe('1 paire par an');
     });
 
-    test('contient les 6 niveaux S', () => {
+    test('contient les 6 niveaux S (S1, S2, S3, S3+, S4, S5/S6)', () => {
       const formules = Object.keys(data.formules);
       expect(formules).toHaveLength(6);
       expect(formules).toContain('S1');
-      expect(formules).toContain('S6');
+      expect(formules).toContain('S2');
+      expect(formules).toContain('S3');
+      expect(formules).toContain('S3+');
+      expect(formules).toContain('S4');
+      expect(formules).toContain('S5/S6');
     });
 
-    test('S1 rembourse à 60% BR (Sécu seule)', () => {
-      expect(data.formules['S1'].pourcentageBR).toBe(60);
+    test('S1 rembourse à 100% BR', () => {
+      expect(data.formules['S1'].pourcentageBR).toBe(100);
     });
 
-    test('S3 rembourse à 250% BR', () => {
-      expect(data.formules['S3'].pourcentageBR).toBe(250);
+    test('S3 rembourse à 350% BR', () => {
+      expect(data.formules['S3'].pourcentageBR).toBe(350);
     });
 
-    test('S6 rembourse à 550% BR', () => {
-      expect(data.formules['S6'].pourcentageBR).toBe(550);
+    test('S4 rembourse à 550% BR', () => {
+      expect(data.formules['S4'].pourcentageBR).toBe(550);
+    });
+
+    test('S5/S6 (retraités) rembourse à 650% BR', () => {
+      expect(data.formules['S5/S6'].pourcentageBR).toBe(650);
     });
 
     test('les pourcentages sont croissants', () => {
@@ -37,8 +45,8 @@ describe('Pro BTP Scraper', () => {
     });
 
     test('les champs de traçabilité sont renseignés', () => {
-      expect(data.dataSource).toBe('scraped');
-      expect(data.confidenceScore).toBeGreaterThanOrEqual(0.5);
+      expect(data.dataSource).toBe('official');
+      expect(data.confidenceScore).toBeGreaterThanOrEqual(0.9);
       expect(data.lastUpdated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     });
   });
@@ -56,8 +64,8 @@ describe('Pro BTP Scraper', () => {
       expect(jsonEntry.formules).toEqual(verified.formules);
     });
 
-    test('le dataSource est "scraped" dans le JSON', () => {
-      expect(jsonEntry.dataSource).toBe('scraped');
+    test('le dataSource est "official" dans le JSON', () => {
+      expect(jsonEntry.dataSource).toBe('official');
     });
 
     test('lastUpdated est renseigné dans le JSON', () => {
