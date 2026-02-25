@@ -16,6 +16,12 @@ const { buildScrapedEntry } = require('./utils');
  * - 400% Tradi : https://media.axa.fr/content/dam/axa-fr/image/particuliers/sante/document-pdf/tableau-garanties-ma-sante-400-tradi.pdf — 400% BR, lu directement
  *
  * Note : Hospi Tradi exclue car ne couvre pas le petit appareillage.
+ * Hospi Tradi page 2 : "Soins courants — Non pris en charge sauf frais pré et post opératoires".
+ *
+ * Vérification : chaque PDF téléchargé (curl) et lu visuellement (Read multimodal).
+ * Section "Matériel médical" > "Prothèses, pansements, petits matériels et autres produits
+ * définis sur la Liste des Produits et Prestations remboursables de la Sécurité sociale
+ * (hors lunettes et aides auditives)".
  */
 function getVerifiedData() {
   return buildScrapedEntry({
@@ -33,7 +39,7 @@ function getVerifiedData() {
     frequence: '1 paire par an',
     conditions: 'Sur prescription médicale. Formule Hospi Tradi non couverte pour le petit appareillage.',
     dataSource: 'scraped',
-    confidenceScore: 0.8
+    confidenceScore: 0.9
   });
 }
 
