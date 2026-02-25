@@ -24,6 +24,16 @@ describe('Klesia Scraper', () => {
       expect(data.formules['Essentiel'].forfaitAnnuel).toBe(0);
     });
 
+    test('Équilibre rembourse à 150% BR + 100€/an', () => {
+      expect(data.formules['Équilibre'].pourcentageBR).toBe(150);
+      expect(data.formules['Équilibre'].forfaitAnnuel).toBe(100);
+    });
+
+    test('Confort rembourse à 200% BR + 150€/an', () => {
+      expect(data.formules['Confort'].pourcentageBR).toBe(200);
+      expect(data.formules['Confort'].forfaitAnnuel).toBe(150);
+    });
+
     test('Premium rembourse à 300% BR + 300€/an', () => {
       expect(data.formules['Premium'].pourcentageBR).toBe(300);
       expect(data.formules['Premium'].forfaitAnnuel).toBe(300);
@@ -44,8 +54,8 @@ describe('Klesia Scraper', () => {
     });
 
     test('les champs de traçabilité sont renseignés', () => {
-      expect(data.dataSource).toBe('scraped');
-      expect(data.confidenceScore).toBeGreaterThanOrEqual(0.5);
+      expect(data.dataSource).toBe('official');
+      expect(data.confidenceScore).toBe(0.95);
       expect(data.lastUpdated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     });
   });
@@ -63,8 +73,8 @@ describe('Klesia Scraper', () => {
       expect(jsonEntry.formules).toEqual(verified.formules);
     });
 
-    test('le dataSource est "scraped" dans le JSON', () => {
-      expect(jsonEntry.dataSource).toBe('scraped');
+    test('le dataSource est "official" dans le JSON', () => {
+      expect(jsonEntry.dataSource).toBe('official');
     });
 
     test('lastUpdated est renseigné dans le JSON', () => {
