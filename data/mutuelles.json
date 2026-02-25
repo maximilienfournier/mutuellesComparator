@@ -251,13 +251,31 @@
       },
       "Santé Pro P5": {
         "pourcentageBR": 500
+      },
+      "Seniors 1S": {
+        "pourcentageBR": 100
+      },
+      "Seniors 2S": {
+        "pourcentageBR": 150
+      },
+      "Seniors 3S Optique/Dentaire": {
+        "pourcentageBR": 150
+      },
+      "Seniors 3S Hospitalisation/Soins": {
+        "pourcentageBR": 250
+      },
+      "Seniors 4S": {
+        "pourcentageBR": 400
+      },
+      "Seniors 5S": {
+        "pourcentageBR": 500
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "scraped",
-    "confidenceScore": 0.7,
+    "dataSource": "official",
+    "confidenceScore": 0.9,
     "lastUpdated": "2026-02-25"
   },
   {
@@ -599,7 +617,7 @@
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "scraped",
+    "dataSource": "official",
     "confidenceScore": 0.9,
     "lastUpdated": "2026-02-25"
   },
