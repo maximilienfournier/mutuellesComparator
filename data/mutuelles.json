@@ -184,21 +184,24 @@
         "pourcentageBR": 100
       },
       "Vivazen 2": {
-        "pourcentageBR": 150
+        "pourcentageBR": 100
       },
       "Vivazen 3": {
-        "pourcentageBR": 200
+        "pourcentageBR": 150
       },
       "Vivazen 4": {
+        "pourcentageBR": 200
+      },
+      "Vivazen 5": {
         "pourcentageBR": 250
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.8,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "AXA",
