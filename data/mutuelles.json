@@ -3,10 +3,18 @@
     "nom": "Harmonie Mutuelle",
     "siren": "538518473",
     "formules": {
-      "Essentiel": { "pourcentageBR": 60 },
-      "Equilibre": { "pourcentageBR": 150 },
-      "Confort": { "pourcentageBR": 200 },
-      "Optimum": { "pourcentageBR": 300 }
+      "Essentiel": {
+        "pourcentageBR": 60
+      },
+      "Equilibre": {
+        "pourcentageBR": 150
+      },
+      "Confort": {
+        "pourcentageBR": 200
+      },
+      "Optimum": {
+        "pourcentageBR": 300
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -19,40 +27,60 @@
     "nom": "MGEN",
     "siren": "775685399",
     "formules": {
-      "Référence": { "pourcentageBR": 170 },
-      "Référence Affinité": { "pourcentageBR": 230 },
-      "Intégrale": { "pourcentageBR": 290 }
+      "Initiale": {
+        "pourcentageBR": 100
+      },
+      "Référence": {
+        "pourcentageBR": 230
+      },
+      "Intégrale": {
+        "pourcentageBR": 350
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.8,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "Alan",
     "siren": "813369193",
     "formules": {
-      "Blue": { "pourcentageBR": 150 },
-      "Green": { "pourcentageBR": 300 },
-      "Purple": { "pourcentageBR": 300 }
+      "Blue": {
+        "pourcentageBR": 250
+      },
+      "Green": {
+        "pourcentageBR": 200
+      },
+      "Purple": {
+        "pourcentageBR": 300
+      }
     },
-    "forfaitAnnuel": null,
+    "forfaitAnnuel": 25,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "dataSource": "scraped",
+    "confidenceScore": 0.8,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "MAIF",
     "siren": "781974267",
     "formules": {
-      "Essentielle": { "pourcentageBR": 100 },
-      "Découverte": { "pourcentageBR": 150 },
-      "Évolution": { "pourcentageBR": 200 },
-      "Optimale": { "pourcentageBR": 300 }
+      "Essentielle": {
+        "pourcentageBR": 100
+      },
+      "Découverte": {
+        "pourcentageBR": 150
+      },
+      "Évolution": {
+        "pourcentageBR": 200
+      },
+      "Optimale": {
+        "pourcentageBR": 300
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -65,9 +93,15 @@
     "nom": "Malakoff Humanis",
     "siren": "775691732",
     "formules": {
-      "Niveau 1": { "pourcentageBR": 100 },
-      "Niveau 2": { "pourcentageBR": 200 },
-      "Niveau 3": { "pourcentageBR": 300 }
+      "Niveau 1": {
+        "pourcentageBR": 100
+      },
+      "Niveau 2": {
+        "pourcentageBR": 200
+      },
+      "Niveau 3": {
+        "pourcentageBR": 300
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -80,9 +114,15 @@
     "nom": "AG2R La Mondiale",
     "siren": "486197757",
     "formules": {
-      "Indice 60": { "pourcentageBR": 100 },
-      "Indice 90": { "pourcentageBR": 200 },
-      "Indice 120": { "pourcentageBR": 500 }
+      "Indice 60": {
+        "pourcentageBR": 100
+      },
+      "Indice 90": {
+        "pourcentageBR": 200
+      },
+      "Indice 120": {
+        "pourcentageBR": 500
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -95,9 +135,15 @@
     "nom": "Swiss Life",
     "siren": "341785840",
     "formules": {
-      "Niveau 1": { "pourcentageBR": 100 },
-      "Niveau 4": { "pourcentageBR": 250 },
-      "Niveau 8": { "pourcentageBR": 400 }
+      "Niveau 1": {
+        "pourcentageBR": 100
+      },
+      "Niveau 4": {
+        "pourcentageBR": 250
+      },
+      "Niveau 8": {
+        "pourcentageBR": 400
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -110,9 +156,15 @@
     "nom": "Groupama",
     "siren": "343115135",
     "formules": {
-      "Santé Active 2": { "pourcentageBR": 130 },
-      "Santé Active 3": { "pourcentageBR": 150 },
-      "Santé Active 4": { "pourcentageBR": 200 }
+      "Santé Active 2": {
+        "pourcentageBR": 130
+      },
+      "Santé Active 3": {
+        "pourcentageBR": 150
+      },
+      "Santé Active 4": {
+        "pourcentageBR": 200
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -125,10 +177,18 @@
     "nom": "MAAF",
     "siren": "542073580",
     "formules": {
-      "Vivazen 1": { "pourcentageBR": 100 },
-      "Vivazen 2": { "pourcentageBR": 150 },
-      "Vivazen 3": { "pourcentageBR": 200 },
-      "Vivazen 4": { "pourcentageBR": 250 }
+      "Vivazen 1": {
+        "pourcentageBR": 100
+      },
+      "Vivazen 2": {
+        "pourcentageBR": 150
+      },
+      "Vivazen 3": {
+        "pourcentageBR": 200
+      },
+      "Vivazen 4": {
+        "pourcentageBR": 250
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -141,9 +201,15 @@
     "nom": "AXA",
     "siren": "310499959",
     "formules": {
-      "Modulango 100": { "pourcentageBR": 100 },
-      "Modulango 125": { "pourcentageBR": 125 },
-      "Modulango 200": { "pourcentageBR": 150 }
+      "Modulango 100": {
+        "pourcentageBR": 100
+      },
+      "Modulango 125": {
+        "pourcentageBR": 125
+      },
+      "Modulango 200": {
+        "pourcentageBR": 150
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -156,9 +222,15 @@
     "nom": "Generali",
     "siren": "552062663",
     "formules": {
-      "Niveau 1": { "pourcentageBR": 125 },
-      "Niveau 3": { "pourcentageBR": 200 },
-      "Niveau 5": { "pourcentageBR": 300 }
+      "Niveau 1": {
+        "pourcentageBR": 125
+      },
+      "Niveau 3": {
+        "pourcentageBR": 200
+      },
+      "Niveau 5": {
+        "pourcentageBR": 300
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -171,9 +243,15 @@
     "nom": "April",
     "siren": "377437694",
     "formules": {
-      "Essentiel": { "pourcentageBR": 100 },
-      "Confort": { "pourcentageBR": 250 },
-      "Premium": { "pourcentageBR": 500 }
+      "Essentiel": {
+        "pourcentageBR": 100
+      },
+      "Confort": {
+        "pourcentageBR": 250
+      },
+      "Premium": {
+        "pourcentageBR": 500
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -186,9 +264,15 @@
     "nom": "Macif (Apivia)",
     "siren": "780435988",
     "formules": {
-      "Vitamin V1": { "pourcentageBR": 100 },
-      "Vitamin V3": { "pourcentageBR": 150 },
-      "Vitamin V5": { "pourcentageBR": 200 }
+      "Vitamin V1": {
+        "pourcentageBR": 100
+      },
+      "Vitamin V3": {
+        "pourcentageBR": 150
+      },
+      "Vitamin V5": {
+        "pourcentageBR": 200
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -201,9 +285,15 @@
     "nom": "MMA",
     "siren": "440048882",
     "formules": {
-      "Santé Éco": { "pourcentageBR": 100 },
-      "Santé Plus": { "pourcentageBR": 200 },
-      "Santé Premium": { "pourcentageBR": 300 }
+      "Santé Éco": {
+        "pourcentageBR": 100
+      },
+      "Santé Plus": {
+        "pourcentageBR": 200
+      },
+      "Santé Premium": {
+        "pourcentageBR": 300
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -216,9 +306,15 @@
     "nom": "GMF",
     "siren": "398972901",
     "formules": {
-      "Santé Pass 1": { "pourcentageBR": 100 },
-      "Santé Pass 2": { "pourcentageBR": 150 },
-      "Santé Pass 3": { "pourcentageBR": 250 }
+      "Santé Pass 1": {
+        "pourcentageBR": 100
+      },
+      "Santé Pass 2": {
+        "pourcentageBR": 150
+      },
+      "Santé Pass 3": {
+        "pourcentageBR": 250
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -231,9 +327,15 @@
     "nom": "Allianz France",
     "siren": "303265128",
     "formules": {
-      "Composio Essentiel": { "pourcentageBR": 100 },
-      "Composio Équilibre": { "pourcentageBR": 200 },
-      "Composio Confort": { "pourcentageBR": 350 }
+      "Composio Essentiel": {
+        "pourcentageBR": 100
+      },
+      "Composio Équilibre": {
+        "pourcentageBR": 200
+      },
+      "Composio Confort": {
+        "pourcentageBR": 350
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -246,9 +348,15 @@
     "nom": "Pro BTP",
     "siren": "784621468",
     "formules": {
-      "S1 Essentiel": { "pourcentageBR": 100 },
-      "S2 Confort": { "pourcentageBR": 200 },
-      "S3 Premium": { "pourcentageBR": 300 }
+      "S1 Essentiel": {
+        "pourcentageBR": 100
+      },
+      "S2 Confort": {
+        "pourcentageBR": 200
+      },
+      "S3 Premium": {
+        "pourcentageBR": 300
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -261,9 +369,15 @@
     "nom": "MNT",
     "siren": "775678584",
     "formules": {
-      "Intégrale Santé S1": { "pourcentageBR": 100 },
-      "Intégrale Santé S2": { "pourcentageBR": 200 },
-      "Intégrale Santé S3": { "pourcentageBR": 300 }
+      "Intégrale Santé S1": {
+        "pourcentageBR": 100
+      },
+      "Intégrale Santé S2": {
+        "pourcentageBR": 200
+      },
+      "Intégrale Santé S3": {
+        "pourcentageBR": 300
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -276,9 +390,15 @@
     "nom": "Aésio Mutuelle",
     "siren": "775627391",
     "formules": {
-      "Essentiel": { "pourcentageBR": 100 },
-      "Medium": { "pourcentageBR": 150 },
-      "Confort": { "pourcentageBR": 200 }
+      "Essentiel": {
+        "pourcentageBR": 100
+      },
+      "Medium": {
+        "pourcentageBR": 150
+      },
+      "Confort": {
+        "pourcentageBR": 200
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -291,9 +411,15 @@
     "nom": "La Mutuelle Générale",
     "siren": "775685340",
     "formules": {
-      "Référence": { "pourcentageBR": 100 },
-      "Essentiel+": { "pourcentageBR": 200 },
-      "Intégral": { "pourcentageBR": 300 }
+      "Référence": {
+        "pourcentageBR": 100
+      },
+      "Essentiel+": {
+        "pourcentageBR": 200
+      },
+      "Intégral": {
+        "pourcentageBR": 300
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -306,9 +432,15 @@
     "nom": "Crédit Mutuel (ACM)",
     "siren": "353073075",
     "formules": {
-      "Primo": { "pourcentageBR": 100 },
-      "Modulo 2": { "pourcentageBR": 200 },
-      "Modulo 3": { "pourcentageBR": 300 }
+      "Primo": {
+        "pourcentageBR": 100
+      },
+      "Modulo 2": {
+        "pourcentageBR": 200
+      },
+      "Modulo 3": {
+        "pourcentageBR": 300
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -321,8 +453,12 @@
     "nom": "MGEFI",
     "siren": "499982098",
     "formules": {
-      "Maitri Santé": { "pourcentageBR": 100 },
-      "Multi Santé 2": { "pourcentageBR": 200 }
+      "Maitri Santé": {
+        "pourcentageBR": 100
+      },
+      "Multi Santé 2": {
+        "pourcentageBR": 200
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -335,9 +471,15 @@
     "nom": "Henner",
     "siren": "323377739",
     "formules": {
-      "Formule 2": { "pourcentageBR": 100 },
-      "Formule 4": { "pourcentageBR": 200 },
-      "Formule 6": { "pourcentageBR": 300 }
+      "Formule 2": {
+        "pourcentageBR": 100
+      },
+      "Formule 4": {
+        "pourcentageBR": 200
+      },
+      "Formule 6": {
+        "pourcentageBR": 300
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
@@ -350,10 +492,18 @@
     "nom": "Klesia",
     "siren": "529168007",
     "formules": {
-      "Essentiel": { "pourcentageBR": 100 },
-      "Équilibre": { "pourcentageBR": 150 },
-      "Confort": { "pourcentageBR": 200 },
-      "Premium": { "pourcentageBR": 300 }
+      "Essentiel": {
+        "pourcentageBR": 100
+      },
+      "Équilibre": {
+        "pourcentageBR": 150
+      },
+      "Confort": {
+        "pourcentageBR": 200
+      },
+      "Premium": {
+        "pourcentageBR": 300
+      }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
