@@ -35,8 +35,8 @@ describe('La Mutuelle Générale Scraper', () => {
     });
 
     test('les champs de traçabilité sont renseignés', () => {
-      expect(data.dataSource).toBe('scraped');
-      expect(data.confidenceScore).toBeGreaterThanOrEqual(0.5);
+      expect(data.dataSource).toBe('official');
+      expect(data.confidenceScore).toBeGreaterThanOrEqual(0.9);
       expect(data.lastUpdated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     });
   });
@@ -54,8 +54,8 @@ describe('La Mutuelle Générale Scraper', () => {
       expect(jsonEntry.formules).toEqual(verified.formules);
     });
 
-    test('le dataSource est "scraped" dans le JSON', () => {
-      expect(jsonEntry.dataSource).toBe('scraped');
+    test('le dataSource est "official" dans le JSON', () => {
+      expect(jsonEntry.dataSource).toBe('official');
     });
 
     test('lastUpdated est renseigné dans le JSON', () => {
