@@ -3,25 +3,25 @@
     "nom": "Harmonie Mutuelle",
     "siren": "538518473",
     "formules": {
-      "Essentiel": {
-        "pourcentageBR": 60
+      "Équipement 1★": {
+        "pourcentageBR": 100,
+        "forfaitAnnuel": 0
       },
-      "Equilibre": {
-        "pourcentageBR": 150
+      "Équipement 2★": {
+        "pourcentageBR": 100,
+        "forfaitAnnuel": 100
       },
-      "Confort": {
-        "pourcentageBR": 200
-      },
-      "Optimum": {
-        "pourcentageBR": 300
+      "Équipement 3★": {
+        "pourcentageBR": 100,
+        "forfaitAnnuel": 200
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
-    "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "conditions": "Sur prescription médicale. Limité aux frais réellement dépensés.",
+    "dataSource": "scraped",
+    "confidenceScore": 0.8,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "MGEN",
