@@ -213,16 +213,22 @@
       "Modulango 125": {
         "pourcentageBR": 125
       },
-      "Modulango 200": {
+      "Modulango 150": {
         "pourcentageBR": 150
+      },
+      "Modulango 200": {
+        "pourcentageBR": 200
+      },
+      "Modulango 400": {
+        "pourcentageBR": 400
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
     "dataSource": "estimated",
-    "confidenceScore": 0.2,
-    "lastUpdated": null
+    "confidenceScore": 0.4,
+    "lastUpdated": "2026-02-25"
   },
   {
     "nom": "Generali",
