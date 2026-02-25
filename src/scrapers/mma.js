@@ -1,26 +1,40 @@
 const { buildScrapedEntry } = require('./utils');
 
 /**
- * Données vérifiées depuis les PDFs officiels MMA (février 2026).
+ * Donnees verifiees depuis les PDFs officiels MMA (fevrier 2026).
  *
- * Formule Vitale (CG379) — 4 niveaux, entrée de gamme.
- * Source : Tableau des garanties CG379 (version 01/2026)
- * https://www.mma.fr/files/live/sites/mmafr/files/documents-tableau-garantie/sante/Tableaux_de_garanties_CG379.pdf
- * Ligne : "Matériel médical (autre qu'aides auditives)"
- * Résultat : Niv1 = non couvert, Niv2 = 100%, Niv3 = 100%, Niv4 = 150% — lus directement
+ * Formule Vitale (CG379) — 4 niveaux, entree de gamme.
+ * Source : Conditions generales n 379 b (edition novembre 2019), tableau de garanties p.12
+ * URL : https://www.mma.fr/files/live/sites/mmafr/files/documents-tableau-garantie/sante/Tableaux_de_garanties_CG379.pdf
+ * (PDF telecharge via Assurland, 44 pages)
+ * Ligne : "Materiel medical (autre qu'aides auditives)"
+ * Resultat : Niv1 = non couvert (-), Niv2 = 100% BRSS, Niv3 = 100% BRSS, Niv4 = 150% BRSS
+ * Verification : lecture directe du PDF le 25/02/2026
  *
  * Formule Essentielle (CG381) — 4 niveaux.
- * Source : Tableau des garanties CG381 Essentielle (version 01/2026)
- * https://www.mma.fr/files/live/sites/mmafr/files/pages-de-contenu/Mutuelle-complementaire-sante/tableaux-garanties/tableau_garanties_essentielle.pdf
- * Ligne : "Matériel médical (autre qu'aides auditives)"
- * Résultat : Niv1 = 100%, Niv2 = 100%, Niv3 = 150%, Niv4 = 200% — lus directement
+ * Source : Tableau des garanties CG381 Essentielle (COVEA RISKS, juillet 2015)
+ * URL originale : https://www.mma.fr/files/live/sites/mmafr/files/pages-de-contenu/Mutuelle-complementaire-sante/tableaux-garanties/tableau_garanties_essentielle.pdf
+ * (PDF bloque par Datadome sur mma.fr, recupere via cache assuconseil)
+ * Ligne : "Appareillage (dont protheses auditives)" (nomenclature ancienne, equivalent a "Materiel medical")
+ * Resultat : Niv1 = 100% BRSS, Niv2 = 100% BRSS, Niv3 = 150% BRSS, Niv4 = 200% BRSS
+ * Verification : lecture directe du PDF le 25/02/2026
  *
- * Formules Famille, Confort, Senior (CG381) — PDFs bloqués par captcha Datadome.
- * Données issues de la recherche préliminaire (snippets Google OCR des PDFs).
- * Les 3 formules ont les mêmes %BR pour le matériel médical :
- * Niv1 = 125%, Niv2 = 150%, Niv3 = 200%, Niv4 = 300% — non confirmés directement
+ * Formule Famille (CG381) — 4 niveaux.
+ * Source : Tableau des garanties CG381 Formule Famille (version 01/2026)
+ * URL : https://www.mma.fr/files/live/sites/mmafr/files/pages-de-contenu/Mutuelle-complementaire-sante/tableaux-garanties/tableau_garanties_famille.pdf
+ * Ligne : "Materiel medical (autre qu'aides auditives)"
+ * Resultat : Niv1 = 125% BRSS, Niv2 = 150% BRSS, Niv3 = 200% BRSS, Niv4 = 300% BRSS
+ * Verification : lecture directe du PDF le 25/02/2026
  *
- * SIREN : 440048882 (MMA IARD, confirmé dans le PDF CG379 page 2).
+ * Formules Confort et Senior (CG381) — PDFs bloques par captcha Datadome (403).
+ * URLs tentees :
+ *   https://www.mma.fr/files/live/sites/mmafr/files/pages-de-contenu/Mutuelle-complementaire-sante/tableaux-garanties/tableau_garanties_confort.pdf
+ *   https://www.mma.fr/files/live/sites/mmafr/files/pages-de-contenu/Mutuelle-complementaire-sante/tableaux-garanties/tableau_garanties_senior.pdf
+ * Donnees issues de la recherche preliminaire (snippets Google, memes %BR que Famille pour materiel medical).
+ * Document Senior RAC (Exemples de remboursements) confirme indirectement les 4 niveaux.
+ * Niv1 = 125%, Niv2 = 150%, Niv3 = 200%, Niv4 = 300% — non confirmes directement par PDF
+ *
+ * SIREN : 440048882 (MMA IARD, confirme dans le PDF CG379 page 5 et Famille page 2).
  */
 function getVerifiedData() {
   return buildScrapedEntry({
