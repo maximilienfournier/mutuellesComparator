@@ -213,27 +213,30 @@
     "nom": "AXA",
     "siren": "310499959",
     "formules": {
-      "Modulango 100": {
+      "Ma Santé Eco Tradi": {
+        "pourcentageBR": 95
+      },
+      "Ma Santé 100% Néo": {
         "pourcentageBR": 100
       },
-      "Modulango 125": {
+      "Ma Santé 125% Néo": {
         "pourcentageBR": 125
       },
-      "Modulango 150": {
+      "Ma Santé 150% Néo": {
         "pourcentageBR": 150
       },
-      "Modulango 200": {
+      "Ma Santé 200% Néo": {
         "pourcentageBR": 200
       },
-      "Modulango 400": {
+      "Ma Santé 400% Tradi": {
         "pourcentageBR": 400
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
-    "conditions": "Sur prescription médicale",
-    "dataSource": "estimated",
-    "confidenceScore": 0.4,
+    "conditions": "Sur prescription médicale. Formule Hospi Tradi non couverte pour le petit appareillage.",
+    "dataSource": "scraped",
+    "confidenceScore": 0.8,
     "lastUpdated": "2026-02-25"
   },
   {
