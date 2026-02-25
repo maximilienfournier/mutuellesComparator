@@ -71,6 +71,34 @@ Chaque mutuelle porte 3 champs de traçabilité :
 | `scraped` | 0.5 – 0.8 | Scrapé depuis le site web, peut être obsolète |
 | `official` | 0.9 – 1.0 | Source officielle (PDF tableau de garanties, API) |
 
+## Scrapers — Comment récupérer les données
+
+### Architecture
+- `src/scrapers/utils.js` — infrastructure partagée (`fetchPage`, `parsePourcentageBR`, `buildScrapedEntry`, `updateMutuellesJson`)
+- `src/scrapers/<mutuelle>.js` — un scraper par mutuelle, avec `getVerifiedData()` + `scrape()` + runner standalone
+- `tests/scrapers/<mutuelle>.test.js` — tests unitaires + cohérence avec mutuelles.json
+- Référence : `src/scrapers/harmonie-mutuelle.js`
+
+### Lire les PDFs de tableaux de garanties
+Beaucoup de mutuelles publient leurs garanties en PDF. Deux cas :
+
+1. **PDF texte** (Swiss Life, MAAF, etc.) → `WebFetch` fonctionne directement
+2. **PDF image** (AXA, Generali, Pro BTP, Henner, Klesia, etc.) → `WebFetch` échoue (retourne du binaire)
+
+**Pour les PDFs image, utiliser `curl` + `Read` :**
+```bash
+curl -sL -o /tmp/mutuelle-garanties.pdf '<URL_DU_PDF>'
+```
+Puis lire avec l'outil `Read` :
+```
+Read({ file_path: '/tmp/mutuelle-garanties.pdf' })
+```
+L'outil `Read` est **multimodal** : il rend le PDF visuellement et peut en extraire le texte, même si le PDF est en format image. Chercher la ligne "petit appareillage", "appareillage orthopédique" ou "orthopédie" dans le tableau.
+
+### Chaque issue GitHub contient
+- Un commentaire de **recherche préliminaire** avec les données trouvées, URLs, et corrections vs données estimées
+- Un commentaire de **méthodologie de scraping** avec les commandes exactes à utiliser
+
 ## Constantes
 
 - **Base Sécu** : 28.86 € (pointure > 37)
