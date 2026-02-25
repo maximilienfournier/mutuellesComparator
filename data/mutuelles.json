@@ -282,27 +282,69 @@
     "nom": "MMA",
     "siren": "440048882",
     "formules": {
-      "Famille Niveau 1": {
-        "pourcentageBR": 125
+      "Vitale Niveau 2": {
+        "pourcentageBR": 100
+      },
+      "Vitale Niveau 3": {
+        "pourcentageBR": 100
       },
       "Vitale Niveau 4": {
         "pourcentageBR": 150
       },
+      "Essentielle Niveau 1": {
+        "pourcentageBR": 100
+      },
+      "Essentielle Niveau 2": {
+        "pourcentageBR": 100
+      },
+      "Essentielle Niveau 3": {
+        "pourcentageBR": 150
+      },
       "Essentielle Niveau 4": {
         "pourcentageBR": 200
+      },
+      "Famille Niveau 1": {
+        "pourcentageBR": 125
+      },
+      "Famille Niveau 2": {
+        "pourcentageBR": 150
       },
       "Famille Niveau 3": {
         "pourcentageBR": 200
       },
       "Famille Niveau 4": {
         "pourcentageBR": 300
+      },
+      "Confort Niveau 1": {
+        "pourcentageBR": 125
+      },
+      "Confort Niveau 2": {
+        "pourcentageBR": 150
+      },
+      "Confort Niveau 3": {
+        "pourcentageBR": 200
+      },
+      "Confort Niveau 4": {
+        "pourcentageBR": 300
+      },
+      "Senior Niveau 1": {
+        "pourcentageBR": 125
+      },
+      "Senior Niveau 2": {
+        "pourcentageBR": 150
+      },
+      "Senior Niveau 3": {
+        "pourcentageBR": 200
+      },
+      "Senior Niveau 4": {
+        "pourcentageBR": 300
       }
     },
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "scraped",
-    "confidenceScore": 0.8,
+    "dataSource": "official",
+    "confidenceScore": 0.7,
     "lastUpdated": "2026-02-25"
   },
   {
