@@ -271,5 +271,95 @@
     "dataSource": "estimated",
     "confidenceScore": 0.2,
     "lastUpdated": null
+  },
+  {
+    "nom": "Aésio Mutuelle",
+    "siren": "775627391",
+    "formules": {
+      "Essentiel": { "pourcentageBR": 100 },
+      "Medium": { "pourcentageBR": 150 },
+      "Confort": { "pourcentageBR": 200 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale",
+    "dataSource": "estimated",
+    "confidenceScore": 0.2,
+    "lastUpdated": null
+  },
+  {
+    "nom": "La Mutuelle Générale",
+    "siren": "775685340",
+    "formules": {
+      "Référence": { "pourcentageBR": 100 },
+      "Essentiel+": { "pourcentageBR": 200 },
+      "Intégral": { "pourcentageBR": 300 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale",
+    "dataSource": "estimated",
+    "confidenceScore": 0.2,
+    "lastUpdated": null
+  },
+  {
+    "nom": "Crédit Mutuel (ACM)",
+    "siren": "353073075",
+    "formules": {
+      "Primo": { "pourcentageBR": 100 },
+      "Modulo 2": { "pourcentageBR": 200 },
+      "Modulo 3": { "pourcentageBR": 300 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale",
+    "dataSource": "estimated",
+    "confidenceScore": 0.2,
+    "lastUpdated": null
+  },
+  {
+    "nom": "MGEFI",
+    "siren": "499982098",
+    "formules": {
+      "Maitri Santé": { "pourcentageBR": 100 },
+      "Multi Santé 2": { "pourcentageBR": 200 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale",
+    "dataSource": "estimated",
+    "confidenceScore": 0.2,
+    "lastUpdated": null
+  },
+  {
+    "nom": "Henner",
+    "siren": "323377739",
+    "formules": {
+      "Formule 2": { "pourcentageBR": 100 },
+      "Formule 4": { "pourcentageBR": 200 },
+      "Formule 6": { "pourcentageBR": 300 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale",
+    "dataSource": "estimated",
+    "confidenceScore": 0.2,
+    "lastUpdated": null
+  },
+  {
+    "nom": "Klesia",
+    "siren": "529168007",
+    "formules": {
+      "Essentiel": { "pourcentageBR": 100 },
+      "Équilibre": { "pourcentageBR": 150 },
+      "Confort": { "pourcentageBR": 200 },
+      "Premium": { "pourcentageBR": 300 }
+    },
+    "forfaitAnnuel": null,
+    "frequence": "1 paire par an",
+    "conditions": "Sur prescription médicale",
+    "dataSource": "estimated",
+    "confidenceScore": 0.2,
+    "lastUpdated": null
   }
 ]
