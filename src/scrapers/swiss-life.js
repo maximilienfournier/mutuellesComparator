@@ -1,12 +1,17 @@
 const { buildScrapedEntry } = require('./utils');
 
 /**
- * Données vérifiées depuis le PDF officiel Swiss Life "Ma Santé" (février 2026).
- * Gamme Santé : 9 niveaux de remboursement pour le petit appareillage.
- * Ligne de garantie : "Prothèses et petit appareillage (dont orthopédie)".
+ * Données vérifiées depuis le PDF officiel SwissLife Santé Particuliers (01/2022).
+ * Gamme : SwissLife Santé Particuliers, 9 niveaux linéaires (assurés < 60 ans).
  *
- * Source : tableau de garanties Swiss Life Santé (PDF texte).
- * SIREN corrigé : 322215021 (Swiss Life Assurance et Patrimoine).
+ * Source : Tableau de garanties 100 % Santé — réf. 5210 - 01.2022
+ * https://www.swisslife.fr/content/dam/france/swisslife/SwissLife%20Sant%C3%A9%20Particuliers%20-%20Tableau%20de%20garanties%20012022.pdf
+ *
+ * Ligne de garantie (page 2, section "Soins courants > Matériel médical") :
+ * "Matériel médical, prothèses et appareillages orthopédiques, prothèse capillaire"
+ * Niveaux 1-9 : 100%, 100%, 125%, 150%, 175%, 200%, 250%, 300%, 400% — lus directement.
+ *
+ * SIREN : 322215021 (SwissLife Prévoyance et Santé).
  */
 function getVerifiedData() {
   return buildScrapedEntry({
@@ -26,7 +31,7 @@ function getVerifiedData() {
     forfaitAnnuel: null,
     frequence: '1 paire par an',
     conditions: 'Sur prescription médicale',
-    dataSource: 'scraped',
+    dataSource: 'official',
     confidenceScore: 0.9
   });
 }
