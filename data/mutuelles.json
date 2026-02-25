@@ -58,11 +58,11 @@
         "pourcentageBR": 300
       }
     },
-    "forfaitAnnuel": 25,
+    "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
-    "dataSource": "scraped",
-    "confidenceScore": 0.8,
+    "dataSource": "estimated",
+    "confidenceScore": 0.2,
     "lastUpdated": "2026-02-25"
   },
   {

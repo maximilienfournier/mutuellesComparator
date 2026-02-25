@@ -31,12 +31,18 @@ function fetchPage(url) {
 
 /**
  * Parse HTML content looking for orthopedic insole reimbursement data.
- * Looks for patterns like "200 % BR", "200% BR", "200 %BR", forfait amounts, etc.
+ *
+ * Distinguishes between:
+ * - BR values explicitly tied to a formula name (high confidence)
+ * - Generic BR values found on page (low confidence — could be Sécu rates or examples)
+ * - Forfait amounts near orthopedic/semelle context (medium confidence)
+ * - Forfait amounts in unrelated context (ignored)
  */
 function parseRemboursementData(html) {
   const results = {
     formules: {},
     forfaitAnnuel: null,
+    confirmedForfait: null,
     frequence: null,
     conditions: null
   };
@@ -48,7 +54,24 @@ function parseRemboursementData(html) {
     results.foundBRValues = brMatches.map(m => parseInt(m[1], 10));
   }
 
-  // Look for forfait patterns (e.g., "100 € par an", "forfait de 50€")
+  // Look for formula-specific BR: "Alan Green : 200 % BR" or "Blue.*200%.*BR"
+  const formulaBRPattern = /Alan\s+(Blue|Green|Purple|Pink)\s*[:\-–]?\s*(\d{2,3})\s*%\s*(?:de la\s*)?(?:BR|BRSS)/gi;
+  const formulaBRMatches = [...html.matchAll(formulaBRPattern)];
+  if (formulaBRMatches.length > 0) {
+    results.formulaBRValues = {};
+    for (const m of formulaBRMatches) {
+      results.formulaBRValues[m[1]] = parseInt(m[2], 10);
+    }
+  }
+
+  // Look for forfait near semelle/orthopédie context (within ~200 chars)
+  const semelleForfaitPattern = /(?:semelle|orthop[ée]d|orthèse|appareillage)[^]*?forfait[^€]*?(\d+)\s*€|forfait[^€]*?(\d+)\s*€[^]*?(?:semelle|orthop[ée]d|orthèse|appareillage)/gi;
+  const semelleForfaitMatches = [...html.matchAll(semelleForfaitPattern)];
+  if (semelleForfaitMatches.length > 0) {
+    results.confirmedForfait = parseInt(semelleForfaitMatches[0][1] || semelleForfaitMatches[0][2], 10);
+  }
+
+  // Generic forfait (low trust — could be any health domain)
   const forfaitPattern = /forfait[^€]*?(\d+)\s*€|(\d+)\s*€\s*(?:par an|\/an|annuel)/gi;
   const forfaitMatches = [...html.matchAll(forfaitPattern)];
   if (forfaitMatches.length > 0) {
@@ -74,33 +97,51 @@ function parseRemboursementData(html) {
 
 /**
  * Build the mutuelle data entry for Alan.
- * Uses scraped data if available, falls back to curated research data.
+ *
+ * IMPORTANT: The BR percentages below are ESTIMATES, not confirmed data.
+ * Alan's guarantee table PDFs are compressed and unreadable by automated tools.
+ * No public comparator site lists Alan's exact % BR for orthopedic insoles.
+ * These values are educated guesses based on general market positioning.
  */
 function buildAlanData(scrapedData) {
-  // Best-known data from research (Alan guarantee tables, comparator sites)
-  // Alan uses % BR for medical equipment (petit appareillage)
-  // Sources: alan.com guarantee tables, comparateur-assurances.net, coover.fr
-  const researchData = {
+  // WARNING: These are estimated values, NOT confirmed from official sources.
+  // Alan's actual guarantee tables (PDFs) could not be parsed.
+  // Confidence remains low until verified against official documents.
+  const estimatedFormules = {
     Blue: { pourcentageBR: 250 },
     Green: { pourcentageBR: 200 },
     Purple: { pourcentageBR: 300 }
   };
 
-  let formules = researchData;
-  let dataSource = 'research';
-  let confidenceScore = 0.5;
+  // Only upgrade from "estimated" if scraping found BR values that are
+  // clearly tied to specific Alan formulas (not just generic Sécu rates)
+  let dataSource = 'estimated';
+  let confidenceScore = 0.2;
+  let formules = estimatedFormules;
 
-  // If scraping found BR values associated with formulas, use those
-  if (scrapedData && scrapedData.foundBRValues && scrapedData.foundBRValues.length > 0) {
+  if (scrapedData && scrapedData.formulaBRValues && Object.keys(scrapedData.formulaBRValues).length > 0) {
+    // We found BR values explicitly associated with named formulas
+    formules = {};
+    for (const [name, br] of Object.entries(scrapedData.formulaBRValues)) {
+      formules[name] = { pourcentageBR: br };
+    }
     dataSource = 'scraped';
     confidenceScore = 0.8;
+  } else if (scrapedData && scrapedData.foundBRValues && scrapedData.foundBRValues.length > 0) {
+    // We found BR values but can't attribute them to specific formulas.
+    // Keep estimated formules, note that some values were found on page.
+    dataSource = 'estimated';
+    confidenceScore = 0.3;
   }
+
+  // Forfait: only trust if clearly associated with semelles/orthopédie context
+  const forfait = scrapedData?.confirmedForfait ?? null;
 
   return {
     nom: MUTUELLE_NAME,
     siren: ALAN_SIREN,
     formules,
-    forfaitAnnuel: scrapedData?.forfaitAnnuel || null,
+    forfaitAnnuel: forfait,
     frequence: scrapedData?.frequence || '1 paire par an',
     conditions: 'Sur prescription médicale',
     dataSource,
