@@ -2,6 +2,7 @@
   {
     "nom": "Harmonie Mutuelle",
     "siren": "538518473",
+    "codesAMC": ["442224671"],
     "formules": {
       "Équipement 1★": {
         "pourcentageBR": 100,
@@ -26,6 +27,7 @@
   {
     "nom": "MGEN",
     "siren": "775685399",
+    "codesAMC": ["775685399", "440363588"],
     "formules": {
       "Initiale": {
         "pourcentageBR": 100
@@ -47,6 +49,7 @@
   {
     "nom": "Alan",
     "siren": "813369193",
+    "codesAMC": ["98532001"],
     "formules": {
       "Green": {
         "pourcentageBR": 300
@@ -68,6 +71,7 @@
   {
     "nom": "MAIF",
     "siren": "781974267",
+    "codesAMC": ["440363588"],
     "formules": {
       "Essentielle": {
         "pourcentageBR": 100
@@ -95,6 +99,7 @@
   {
     "nom": "Malakoff Humanis",
     "siren": "775691732",
+    "codesAMC": ["75950444", "775691181", "784718256"],
     "formules": {
       "Niveau 1": {
         "pourcentageBR": 100
@@ -122,6 +127,7 @@
   {
     "nom": "AG2R La Mondiale",
     "siren": "486197757",
+    "codesAMC": ["98532001"],
     "formules": {
       "Protecvia Indice 30": {
         "pourcentageBR": 100
@@ -149,6 +155,7 @@
   {
     "nom": "Groupama",
     "siren": "343115135",
+    "codesAMC": ["09420001", "09470006"],
     "formules": {
       "Santé Active Niveau 1": {
         "pourcentageBR": 100
@@ -176,6 +183,7 @@
   {
     "nom": "MAAF",
     "siren": "542073580",
+    "codesAMC": ["79003539"],
     "formules": {
       "Vivazen 1": {
         "pourcentageBR": 100
@@ -203,6 +211,7 @@
   {
     "nom": "AXA",
     "siren": "310499959",
+    "codesAMC": ["00420000"],
     "formules": {
       "Ma Santé Eco Tradi": {
         "pourcentageBR": 95
@@ -233,6 +242,7 @@
   {
     "nom": "Generali",
     "siren": "552062663",
+    "codesAMC": ["602062481"],
     "formules": {
       "Santé Pro P0": {
         "pourcentageBR": 100
@@ -281,6 +291,7 @@
   {
     "nom": "MMA",
     "siren": "440048882",
+    "codesAMC": ["00440008"],
     "formules": {
       "Vitale Niveau 2": {
         "pourcentageBR": 100
@@ -350,6 +361,7 @@
   {
     "nom": "GMF",
     "siren": "398972901",
+    "codesAMC": ["08420002"],
     "formules": {
       "Santé Pass Niveau 1": {
         "pourcentageBR": 100
@@ -374,6 +386,7 @@
   {
     "nom": "Allianz France",
     "siren": "303265128",
+    "codesAMC": ["00410001"],
     "formules": {
       "Composio Eco": {
         "pourcentageBR": 100
@@ -407,6 +420,7 @@
   {
     "nom": "Pro BTP",
     "siren": "784621468",
+    "codesAMC": ["75809145"],
     "formules": {
       "S1": {
         "pourcentageBR": 100
@@ -437,6 +451,7 @@
   {
     "nom": "MNT",
     "siren": "775678584",
+    "codesAMC": ["775678584"],
     "formules": {
       "Essentielle": {
         "pourcentageBR": 100
@@ -464,6 +479,7 @@
   {
     "nom": "Aésio Mutuelle",
     "siren": "775627391",
+    "codesAMC": ["98532001"],
     "formules": {
       "Santé Particuliers N3": {
         "pourcentageBR": 150
@@ -485,6 +501,7 @@
   {
     "nom": "La Mutuelle Générale",
     "siren": "775685340",
+    "codesAMC": ["775685340"],
     "formules": {
       "Itineo Eco": {
         "pourcentageBR": 100
@@ -509,6 +526,7 @@
   {
     "nom": "Crédit Mutuel (ACM)",
     "siren": "352406748",
+    "codesAMC": ["01400001", "04490009"],
     "formules": {
       "Primo": {
         "pourcentageBR": 100,
@@ -541,6 +559,7 @@
   {
     "nom": "MGEFI",
     "siren": "499982098",
+    "codesAMC": ["499982098"],
     "formules": {
       "Mgéfi Maitri": {
         "pourcentageBR": 100
@@ -562,6 +581,7 @@
   {
     "nom": "Henner",
     "siren": "323377739",
+    "codesAMC": ["00402537", "75949776"],
     "formules": {
       "Privilèges F1": {
         "pourcentageBR": 100
@@ -595,6 +615,7 @@
   {
     "nom": "Klesia",
     "siren": "529168007",
+    "codesAMC": ["00733931", "00402529"],
     "formules": {
       "Essentiel": {
         "pourcentageBR": 100,
@@ -623,6 +644,7 @@
   {
     "nom": "Swiss Life",
     "siren": "322215021",
+    "codesAMC": ["98532203"],
     "formules": {
       "Niveau 1": {
         "pourcentageBR": 100
@@ -662,6 +684,7 @@
   {
     "nom": "April",
     "siren": "378724530",
+    "codesAMC": ["00402991"],
     "formules": {
       "Santé Mix N1": {
         "pourcentageBR": 100
@@ -695,6 +718,7 @@
   {
     "nom": "Macif (Apivia)",
     "siren": "779558501",
+    "codesAMC": ["98532001"],
     "formules": {
       "Vitamin V1": {
         "pourcentageBR": 100

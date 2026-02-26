@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remboursement Semelles Orthopediques</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Semelles Orthopediques</h1>
+      <p class="subtitle">Estimation de remboursement</p>
+    </header>
+
+    <main>
+      <!-- Step 1: Identify mutuelle -->
+      <section class="card" id="step-mutuelle">
+        <h2>1. Identifier la mutuelle</h2>
+        <div class="search-group">
+          <label for="search-input">Code AMC ou nom de la mutuelle</label>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Ex: 442224671 ou Harmonie"
+            autocomplete="off"
+          >
+          <ul id="suggestions" class="suggestions hidden"></ul>
+        </div>
+
+        <div id="mutuelle-info" class="mutuelle-info hidden">
+          <div class="mutuelle-header">
+            <span id="mutuelle-nom" class="mutuelle-nom"></span>
+            <span id="confidence-badge" class="badge"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="formule-select">Formule</label>
+            <select id="formule-select">
+              <option value="">-- Selectionnez une formule --</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 2: Plafond display -->
+      <section class="card hidden" id="step-plafond">
+        <h2>2. Plafond de remboursement</h2>
+        <div class="plafond-card">
+          <div class="plafond-label">Remboursement maximum</div>
+          <div class="plafond-amount" id="plafond-amount">--</div>
+          <div class="plafond-detail" id="plafond-detail"></div>
+        </div>
+      </section>
+
+      <!-- Step 3: Optional detailed calculation -->
+      <section class="card hidden" id="step-detail">
+        <h2>3. Calcul detaille (optionnel)</h2>
+        <div class="form-group">
+          <label for="prix-input">Prix reel des semelles</label>
+          <div class="input-euro">
+            <input type="number" id="prix-input" placeholder="150" min="0" step="0.01">
+            <span class="euro-sign">&euro;</span>
+          </div>
+        </div>
+
+        <div id="result-detail" class="result-detail hidden">
+          <div class="result-row">
+            <span>Part Securite sociale</span>
+            <span id="result-secu" class="result-amount positive">--</span>
+          </div>
+          <div class="result-row">
+            <span>Part mutuelle</span>
+            <span id="result-mutuelle" class="result-amount positive">--</span>
+          </div>
+          <div class="result-row result-total">
+            <span>Reste a charge</span>
+            <span id="result-rac" class="result-amount negative">--</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 4: Generate devis -->
+      <section class="card hidden" id="step-devis">
+        <h2>4. Generer un devis</h2>
+        <div class="form-group">
+          <label for="patient-input">Nom du patient</label>
+          <input type="text" id="patient-input" placeholder="Nom du patient">
+        </div>
+        <div class="form-group">
+          <label for="podologue-input">Nom du podologue</label>
+          <input type="text" id="podologue-input" placeholder="Nom du podologue">
+        </div>
+        <button id="btn-devis" class="btn-primary">Generer le devis</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>Base de remboursement Securite sociale : 28,86 &euro; (pointure &gt; 37) | Taux : 60%</p>
+      <p>Donnees indicatives — 24 mutuelles referencees</p>
+    </footer>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

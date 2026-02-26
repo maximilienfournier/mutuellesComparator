@@ -42,6 +42,18 @@ const mutuelleAvecForfait = {
   conditions: 'Sur prescription médicale'
 };
 
+const mutuelleAvecForfaitFormule = {
+  nom: 'Mutuelle D',
+  siren: '000000004',
+  formules: {
+    'SansForfait': { pourcentageBR: 100, forfaitAnnuel: 0 },
+    'AvecForfait': { pourcentageBR: 100, forfaitAnnuel: 150 }
+  },
+  forfaitAnnuel: null,
+  frequence: '1 paire par an',
+  conditions: 'Sur prescription médicale'
+};
+
 describe('calculerRemboursement', () => {
   test('calcule correctement le remboursement sécu (60% de la base)', () => {
     const result = calculerRemboursement(mutuelleA, 'Basique', 150);
@@ -79,6 +91,14 @@ describe('calculerRemboursement', () => {
     const result = calculerRemboursement(mutuelleAvecForfait, 'Unique', 150);
     const sansF = calculerRemboursement(mutuelleA, 'Basique', 150);
     expect(result.remboursementMutuelle).toBeGreaterThan(sansF.remboursementMutuelle);
+  });
+
+  test('utilise le forfait au niveau formule plutôt que mutuelle', () => {
+    const avecForfait = calculerRemboursement(mutuelleAvecForfaitFormule, 'AvecForfait', 200);
+    const sansForfait = calculerRemboursement(mutuelleAvecForfaitFormule, 'SansForfait', 200);
+    // AvecForfait: 100% BR (28.86) + 150€ forfait vs SansForfait: 100% BR (28.86) + 0€
+    expect(avecForfait.remboursementMutuelle).toBeGreaterThan(sansForfait.remboursementMutuelle);
+    expect(sansForfait.remboursementMutuelle).toBeCloseTo(BASE_SECU - BASE_SECU * TAUX_SECU, 2);
   });
 
   test('retourne les métadonnées de la mutuelle', () => {
