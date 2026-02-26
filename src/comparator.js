@@ -28,7 +28,7 @@ function calculerRemboursement(mutuelle, formuleNom, prixSemelles) {
   const remboursementMutuelle = Math.min(partMutuelle, resteApresSecu);
 
   // Ajouter le forfait annuel si disponible
-  const forfait = mutuelle.forfaitAnnuel || 0;
+  const forfait = formule.forfaitAnnuel ?? mutuelle.forfaitAnnuel ?? 0;
   const totalMutuelle = remboursementMutuelle + forfait;
   const totalRembourseMutuelle = Math.min(totalMutuelle, resteApresSecu);
 

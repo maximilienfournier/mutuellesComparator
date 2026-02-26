@@ -5,11 +5,22 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
+    "server": "node src/server.js",
     "test": "jest"
   },
-  "keywords": ["mutuelle", "semelles", "orthopédiques", "comparateur", "remboursement"],
+  "keywords": [
+    "mutuelle",
+    "semelles",
+    "orthopédiques",
+    "comparateur",
+    "remboursement"
+  ],
   "license": "MIT",
   "devDependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "supertest": "^7.2.2"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }
