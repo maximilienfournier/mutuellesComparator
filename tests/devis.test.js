@@ -48,8 +48,21 @@ describe('genererDevisHTML', () => {
     expect(html).toContain('MGEN');
     expect(html).toContain('Reference');
     expect(html).toContain('150.00');
-    expect(html).toContain('17.32');
-    expect(html).toContain('83.62');
+  });
+
+  test('ne contient pas le detail des remboursements', () => {
+    const html = genererDevisHTML({ calcul, patient: 'Dupont', podologue: 'Dr Martin', date: '26/02/2026' });
+    expect(html).not.toContain('17.32');
+    expect(html).not.toContain('83.62');
+    expect(html).not.toContain('49.06');
+    expect(html).not.toContain('Reste a charge');
+    expect(html).not.toContain('Remboursement Securite sociale');
+    expect(html).not.toContain('Remboursement mutuelle');
+  });
+
+  test('contient le total a regler egal au prix', () => {
+    const html = genererDevisHTML({ calcul, patient: 'Test', podologue: 'Test' });
+    expect(html).toContain('Total a regler');
   });
 
   test('contient la date', () => {
@@ -63,17 +76,11 @@ describe('genererDevisHTML', () => {
     expect(html).toContain('&lt;script&gt;');
   });
 
-  test('contient la mention legale', () => {
+  test('contient la mention pour transmettre a la mutuelle', () => {
     const html = genererDevisHTML({ calcul, patient: 'Test', podologue: 'Test' });
-    expect(html).toContain('indicatif');
+    expect(html).toContain('transmettre');
+    expect(html).toContain('mutuelle');
     expect(html).toContain('28.86');
-  });
-
-  test('affiche le forfait si present', () => {
-    const calculAvecForfait = { ...calcul, forfait: 100 };
-    const html = genererDevisHTML({ calcul: calculAvecForfait, patient: 'Test', podologue: 'Test' });
-    expect(html).toContain('forfait');
-    expect(html).toContain('100.00');
   });
 
   test('gere les valeurs manquantes', () => {

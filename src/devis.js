@@ -4,9 +4,6 @@ function genererDevisHTML(options) {
   const { calcul, patient, podologue, date } = options;
   const dateStr = date || new Date().toLocaleDateString('fr-FR');
 
-  const forfait = calcul.forfait || 0;
-  const totalRembourse = calcul.remboursementSecu + calcul.remboursementMutuelle;
-
   return `<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -29,7 +26,6 @@ function genererDevisHTML(options) {
     tr:last-child td { border-bottom: 2px solid #2c5282; }
     .amount { text-align: right; font-variant-numeric: tabular-nums; }
     .total-row { font-weight: bold; background: #ebf4ff; }
-    .reste-row { font-weight: bold; background: #fff5f5; color: #c53030; }
     .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 11px; color: #888; }
     .footer p { margin-bottom: 4px; }
     @media print {
@@ -73,32 +69,19 @@ function genererDevisHTML(options) {
     </thead>
     <tbody>
       <tr>
-        <td>Prix des semelles orthopédiques</td>
+        <td>Semelles orthopediques sur mesure</td>
         <td class="amount">${formatEuros(calcul.prixSemelles)}</td>
       </tr>
-      <tr>
-        <td>Remboursement Securite sociale (${calcul.pourcentageBR}% BR, base ${formatEuros(BASE_SECU)})</td>
-        <td class="amount">- ${formatEuros(calcul.remboursementSecu)}</td>
-      </tr>
-      <tr>
-        <td>Remboursement mutuelle${forfait > 0 ? ' (dont forfait ' + formatEuros(forfait) + ')' : ''}</td>
-        <td class="amount">- ${formatEuros(calcul.remboursementMutuelle)}</td>
-      </tr>
       <tr class="total-row">
-        <td>Total rembourse</td>
-        <td class="amount">${formatEuros(totalRembourse)}</td>
-      </tr>
-      <tr class="reste-row">
-        <td>Reste a charge patient</td>
-        <td class="amount">${formatEuros(calcul.resteACharge)}</td>
+        <td>Total a regler</td>
+        <td class="amount">${formatEuros(calcul.prixSemelles)}</td>
       </tr>
     </tbody>
   </table>
 
   <div class="footer">
-    <p>Ce devis est etabli a titre indicatif. Les montants de remboursement sont bases sur la Base de Remboursement de la Securite Sociale (BRSS) de ${formatEuros(BASE_SECU)} pour les semelles orthopediques (pointure &gt; 37).</p>
-    <p>Le remboursement effectif depend du contrat souscrit aupres de votre mutuelle et de votre situation personnelle.</p>
-    <p>Frequence : ${escapeHtml(calcul.frequence || 'Non precisee')}</p>
+    <p>Ce devis est a transmettre a votre mutuelle pour obtenir le remboursement.</p>
+    <p>Base de Remboursement Securite Sociale (BRSS) : ${formatEuros(BASE_SECU)} (pointure &gt; 37).</p>
     <p>Conditions : ${escapeHtml(calcul.conditions || 'Sur prescription medicale')}</p>
   </div>
 </body>
