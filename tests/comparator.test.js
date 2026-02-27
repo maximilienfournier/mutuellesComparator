@@ -2,6 +2,7 @@ const {
   calculerRemboursement,
   calculerRemboursementBilan,
   simulerDeuxFactures,
+  optimiserRepartition,
   comparerRemboursements,
   trouverMeilleure,
   listerFormules,
@@ -285,5 +286,75 @@ describe('simulerDeuxFactures', () => {
     // Gain négatif car la facture unique couvre déjà tout
     expect(result.factureUnique.resteACharge).toBe(0);
     expect(result.deuxFactures.resteACharge).toBeGreaterThanOrEqual(0);
+  });
+});
+
+describe('optimiserRepartition', () => {
+  test('retourne optimisationPossible=false sans forfait podologie', () => {
+    const result = optimiserRepartition(mutuelleA, 'Basique', 185);
+    expect(result.optimisationPossible).toBe(false);
+    expect(result.meilleureSolution).toBe('unique');
+    expect(result.repartitionOptimale).toBeNull();
+    expect(result.gain).toBe(0);
+  });
+
+  test('trouve une répartition avec gain quand forfait podo disponible', () => {
+    const result = optimiserRepartition(mutuelleAvecPodo, 'Standard', 185);
+    // Avec forfait podo (40€/séance, 160€/an), séparer est avantageux
+    expect(result.optimisationPossible).toBe(true);
+    expect(result.gain).toBeGreaterThan(0);
+    expect(result.meilleureSolution).toBe('deuxFactures');
+    expect(result.repartitionOptimale).not.toBeNull();
+    expect(result.repartitionOptimale.prixBilan).toBeGreaterThan(0);
+    expect(result.repartitionOptimale.prixSemelles).toBeLessThan(185);
+    expect(result.repartitionOptimale.prixBilan + result.repartitionOptimale.prixSemelles).toBe(185);
+  });
+
+  test('le RAC optimisé est inférieur ou égal au RAC facture unique', () => {
+    const result = optimiserRepartition(mutuelleAvecPodo, 'Standard', 185);
+    expect(result.repartitionOptimale.resteACharge).toBeLessThanOrEqual(result.factureUnique.resteACharge);
+  });
+
+  test('le bilan optimal est plafonné par le montant par séance', () => {
+    const result = optimiserRepartition(mutuelleAvecPodo, 'Standard', 185);
+    // montantParSeance = 40€ => au-delà de 40€ de bilan, le RAC bilan augmente
+    // Le bilan optimal devrait être autour de 40€
+    expect(result.repartitionOptimale.prixBilan).toBe(40);
+  });
+
+  test('optimisation avec forfait annuel uniquement', () => {
+    const result = optimiserRepartition(mutuelleAvecPodoDedié, 'Top', 185);
+    // forfaitAnnuel formule = 200€, forfaitPodologie.montantAnnuel = 35€
+    // Facture unique couvre déjà tout (100%BR + 200€ forfait) => pas d'intérêt à séparer
+    // La facture unique RAC = 0, donc pas de gain possible
+    expect(result.factureUnique.resteACharge).toBe(0);
+    expect(result.gain).toBe(0);
+  });
+
+  test('formule sans forfait podo dans mutuelle qui en a une autre', () => {
+    const result = optimiserRepartition(mutuelleAvecPodo, 'SansPodo', 185);
+    expect(result.optimisationPossible).toBe(false);
+    expect(result.gain).toBe(0);
+  });
+
+  test('lance une erreur si formule inexistante', () => {
+    expect(() => optimiserRepartition(mutuelleA, 'Inexistante', 185))
+      .toThrow('Formule "Inexistante" introuvable');
+  });
+
+  test('prixTotal correct dans le résultat', () => {
+    const result = optimiserRepartition(mutuelleAvecPodo, 'Standard', 200);
+    expect(result.prixTotal).toBe(200);
+  });
+
+  test('détail semelles et bilan présents dans la répartition optimale', () => {
+    const result = optimiserRepartition(mutuelleAvecPodo, 'Standard', 185);
+    expect(result.repartitionOptimale.semelles).toBeDefined();
+    expect(result.repartitionOptimale.semelles.resteACharge).toBeDefined();
+    expect(result.repartitionOptimale.semelles.remboursementSecu).toBeDefined();
+    expect(result.repartitionOptimale.semelles.remboursementMutuelle).toBeDefined();
+    expect(result.repartitionOptimale.bilan).toBeDefined();
+    expect(result.repartitionOptimale.bilan.resteACharge).toBeDefined();
+    expect(result.repartitionOptimale.bilan.remboursementPodologie).toBeDefined();
   });
 });

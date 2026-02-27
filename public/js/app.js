@@ -25,6 +25,10 @@
   var resultSimple = document.getElementById('result-simple');
   var resultComparison = document.getElementById('result-comparison');
   var simulationGain = document.getElementById('simulation-gain');
+  var optimisationSuggestion = document.getElementById('optimisation-suggestion');
+  var optimisationText = document.getElementById('optimisation-text');
+  var btnAppliquerOptimisation = document.getElementById('btn-appliquer-optimisation');
+  var optimisationPrixBilan = null;
   var stepDevis = document.getElementById('step-devis');
   var btnDevis = document.getElementById('btn-devis');
   var patientInput = document.getElementById('patient-input');
@@ -230,6 +234,15 @@
       });
   }
 
+  // Apply optimisation suggestion
+  btnAppliquerOptimisation.addEventListener('click', function () {
+    if (optimisationPrixBilan != null) {
+      bilanInput.value = optimisationPrixBilan;
+      optimisationSuggestion.classList.add('hidden');
+      onDoubleInput();
+    }
+  });
+
   // Double mode: prix total + bilan → triggers comparison
   function onDoubleInput() {
     var prixTotal = parseFloat(prixTotalInput.value);
@@ -238,8 +251,12 @@
     if (isNaN(prixTotal) || prixTotal <= 0 || !selectedMutuelle || !formuleSelect.value) {
       stepResults.classList.add('hidden');
       stepDevis.classList.add('hidden');
+      optimisationSuggestion.classList.add('hidden');
       return;
     }
+
+    // Fetch optimisation suggestion when prix total is entered
+    fetchOptimisation(prixTotal);
 
     // If no bilan entered yet, show simple calc with the total price
     if (isNaN(prixBilan) || prixBilan <= 0) {
@@ -316,6 +333,33 @@
       })
       .catch(function () {
         stepResults.classList.add('hidden');
+      });
+  }
+
+  function fetchOptimisation(prixTotal) {
+    var params = new URLSearchParams({
+      mutuelle: selectedMutuelle.nom,
+      formule: formuleSelect.value,
+      prixTotal: prixTotal.toString()
+    });
+
+    fetch('/api/optimisation?' + params.toString())
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data.error || !data.optimisationPossible || data.gain <= 0) {
+          optimisationSuggestion.classList.add('hidden');
+          optimisationPrixBilan = null;
+          return;
+        }
+        optimisationPrixBilan = data.repartitionOptimale.prixBilan;
+        optimisationText.textContent = 'Repartition optimale : bilan a '
+          + data.repartitionOptimale.prixBilan + ' \u20AC / semelles a '
+          + data.repartitionOptimale.prixSemelles + ' \u20AC — economie '
+          + data.gain.toFixed(2) + ' \u20AC';
+        optimisationSuggestion.classList.remove('hidden');
+      })
+      .catch(function () {
+        optimisationSuggestion.classList.add('hidden');
       });
   }
 

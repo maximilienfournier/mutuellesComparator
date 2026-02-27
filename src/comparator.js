@@ -147,6 +147,94 @@ function simulerDeuxFactures(mutuelle, formuleNom, prixSemelles, prixBilan) {
   };
 }
 
+function optimiserRepartition(mutuelle, formuleNom, prixTotal) {
+  const formule = mutuelle.formules[formuleNom];
+  if (!formule) {
+    throw new Error(`Formule "${formuleNom}" introuvable pour ${mutuelle.nom}`);
+  }
+
+  // Base : facture unique (tout en semelles)
+  const factureUnique = calculerRemboursement(mutuelle, formuleNom, prixTotal);
+
+  if (!formule.forfaitPodologie) {
+    return {
+      prixTotal,
+      optimisationPossible: false,
+      factureUnique: {
+        resteACharge: factureUnique.resteACharge,
+        remboursementSecu: factureUnique.remboursementSecu,
+        remboursementMutuelle: factureUnique.remboursementMutuelle
+      },
+      meilleureSolution: 'unique',
+      repartitionOptimale: null,
+      gain: 0
+    };
+  }
+
+  // Itérer sur les répartitions possibles (pas de 1€)
+  let meilleurRAC = factureUnique.resteACharge;
+  let meilleurPrixBilan = 0;
+
+  for (let prixBilan = 1; prixBilan <= prixTotal; prixBilan++) {
+    const prixSemelles = prixTotal - prixBilan;
+    const racSemelles = calculerRemboursement(mutuelle, formuleNom, prixSemelles).resteACharge;
+    const racBilan = calculerRemboursementBilan(mutuelle, formuleNom, prixBilan).resteACharge;
+    const racTotal = arrondir(racSemelles + racBilan);
+
+    if (racTotal < meilleurRAC) {
+      meilleurRAC = racTotal;
+      meilleurPrixBilan = prixBilan;
+    }
+  }
+
+  const gain = arrondir(factureUnique.resteACharge - meilleurRAC);
+
+  if (meilleurPrixBilan === 0) {
+    return {
+      prixTotal,
+      optimisationPossible: true,
+      factureUnique: {
+        resteACharge: factureUnique.resteACharge,
+        remboursementSecu: factureUnique.remboursementSecu,
+        remboursementMutuelle: factureUnique.remboursementMutuelle
+      },
+      meilleureSolution: 'unique',
+      repartitionOptimale: null,
+      gain: 0
+    };
+  }
+
+  const prixSemelles = prixTotal - meilleurPrixBilan;
+  const detailSemelles = calculerRemboursement(mutuelle, formuleNom, prixSemelles);
+  const detailBilan = calculerRemboursementBilan(mutuelle, formuleNom, meilleurPrixBilan);
+
+  return {
+    prixTotal,
+    optimisationPossible: true,
+    factureUnique: {
+      resteACharge: factureUnique.resteACharge,
+      remboursementSecu: factureUnique.remboursementSecu,
+      remboursementMutuelle: factureUnique.remboursementMutuelle
+    },
+    meilleureSolution: 'deuxFactures',
+    repartitionOptimale: {
+      prixBilan: meilleurPrixBilan,
+      prixSemelles,
+      resteACharge: meilleurRAC,
+      semelles: {
+        resteACharge: detailSemelles.resteACharge,
+        remboursementSecu: detailSemelles.remboursementSecu,
+        remboursementMutuelle: detailSemelles.remboursementMutuelle
+      },
+      bilan: {
+        resteACharge: detailBilan.resteACharge,
+        remboursementPodologie: detailBilan.remboursementPodologie
+      }
+    },
+    gain
+  };
+}
+
 function arrondir(val) {
   return Math.round(val * 100) / 100;
 }
@@ -156,6 +244,7 @@ module.exports = {
   calculerRemboursement,
   calculerRemboursementBilan,
   simulerDeuxFactures,
+  optimiserRepartition,
   comparerRemboursements,
   trouverMeilleure,
   listerFormules,
