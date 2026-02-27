@@ -19,14 +19,14 @@ function getVerifiedData() {
     siren: '322215021',
     formules: {
       'Niveau 1': { pourcentageBR: 100 },
-      'Niveau 2': { pourcentageBR: 100 },
-      'Niveau 3': { pourcentageBR: 125 },
-      'Niveau 4': { pourcentageBR: 150 },
-      'Niveau 5': { pourcentageBR: 175 },
-      'Niveau 6': { pourcentageBR: 200 },
-      'Niveau 7': { pourcentageBR: 250 },
-      'Niveau 8': { pourcentageBR: 300 },
-      'Niveau 9': { pourcentageBR: 400 }
+      'Niveau 2': { pourcentageBR: 100, forfaitPodologie: { montantAnnuel: 100, montantParSeance: 20, nbSeancesMax: 5, enveloppePartagee: 'médecines douces' } },
+      'Niveau 3': { pourcentageBR: 125, forfaitPodologie: { montantAnnuel: 150, montantParSeance: 30, nbSeancesMax: 5, enveloppePartagee: 'médecines douces' } },
+      'Niveau 4': { pourcentageBR: 150, forfaitPodologie: { montantAnnuel: 150, montantParSeance: 30, nbSeancesMax: 5, enveloppePartagee: 'médecines douces' } },
+      'Niveau 5': { pourcentageBR: 175, forfaitPodologie: { montantAnnuel: 200, montantParSeance: 40, nbSeancesMax: 5, enveloppePartagee: 'médecines douces' } },
+      'Niveau 6': { pourcentageBR: 200, forfaitPodologie: { montantAnnuel: 200, montantParSeance: 40, nbSeancesMax: 5, enveloppePartagee: 'médecines douces' } },
+      'Niveau 7': { pourcentageBR: 250, forfaitPodologie: { montantAnnuel: 250, montantParSeance: 50, nbSeancesMax: 5, enveloppePartagee: 'médecines douces' } },
+      'Niveau 8': { pourcentageBR: 300, forfaitPodologie: { montantAnnuel: 250, montantParSeance: 50, nbSeancesMax: 5, enveloppePartagee: 'médecines douces' } },
+      'Niveau 9': { pourcentageBR: 400, forfaitPodologie: { montantAnnuel: 275, montantParSeance: 55, nbSeancesMax: 5, enveloppePartagee: 'médecines douces' } }
     },
     forfaitAnnuel: null,
     frequence: '1 paire par an',

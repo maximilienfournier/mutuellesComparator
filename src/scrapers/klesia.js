@@ -37,9 +37,9 @@ function getVerifiedData() {
     siren: '529168007',
     formules: {
       'Essentiel': { pourcentageBR: 100, forfaitAnnuel: 0 },
-      'Équilibre': { pourcentageBR: 150, forfaitAnnuel: 100 },
-      'Confort': { pourcentageBR: 200, forfaitAnnuel: 150 },
-      'Premium': { pourcentageBR: 300, forfaitAnnuel: 300 }
+      'Équilibre': { pourcentageBR: 150, forfaitAnnuel: 100, forfaitPodologie: { montantAnnuel: 90, montantParSeance: 30, nbSeancesMax: 3, enveloppePartagee: 'médecines douces' } },
+      'Confort': { pourcentageBR: 200, forfaitAnnuel: 150, forfaitPodologie: { montantAnnuel: 120, montantParSeance: 40, nbSeancesMax: 3, enveloppePartagee: 'médecines douces' } },
+      'Premium': { pourcentageBR: 300, forfaitAnnuel: 300, forfaitPodologie: { montantAnnuel: 300, montantParSeance: 50, nbSeancesMax: 6, enveloppePartagee: 'médecines douces' } }
     },
     forfaitAnnuel: null,
     frequence: '1 paire par an',

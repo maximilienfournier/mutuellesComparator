@@ -23,9 +23,9 @@ function getVerifiedData() {
     nom: 'MGEFI',
     siren: '499982098',
     formules: {
-      'Mgéfi Maitri': { pourcentageBR: 100 },
-      'Mgéfi Vita 2': { pourcentageBR: 200 },
-      'Mgéfi Multi 2': { pourcentageBR: 200 }
+      'Mgéfi Maitri': { pourcentageBR: 100, forfaitPodologie: { montantAnnuel: 75, montantParSeance: 25, nbSeancesMax: 3, enveloppePartagee: 'médecines douces' } },
+      'Mgéfi Vita 2': { pourcentageBR: 200, forfaitPodologie: { montantAnnuel: 100, montantParSeance: 25, nbSeancesMax: 4, enveloppePartagee: 'médecines douces' } },
+      'Mgéfi Multi 2': { pourcentageBR: 200, forfaitPodologie: { montantAnnuel: 125, montantParSeance: 25, nbSeancesMax: 5, enveloppePartagee: 'médecines douces' } }
     },
     forfaitAnnuel: null,
     frequence: '1 paire par an',

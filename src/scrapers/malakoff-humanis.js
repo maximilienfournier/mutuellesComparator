@@ -18,9 +18,9 @@ function getVerifiedData() {
     formules: {
       'Niveau 1': { pourcentageBR: 100 },
       'Niveau 2': { pourcentageBR: 125 },
-      'Niveau 3': { pourcentageBR: 150 },
-      'Niveau 4': { pourcentageBR: 175 },
-      'Niveau 5': { pourcentageBR: 200 }
+      'Niveau 3': { pourcentageBR: 150, forfaitPodologie: { montantAnnuel: 80, montantParSeance: 10, nbSeancesMax: null, enveloppePartagee: null } },
+      'Niveau 4': { pourcentageBR: 175, forfaitPodologie: { montantAnnuel: 120, montantParSeance: 15, nbSeancesMax: null, enveloppePartagee: null } },
+      'Niveau 5': { pourcentageBR: 200, forfaitPodologie: { montantAnnuel: 160, montantParSeance: 20, nbSeancesMax: null, enveloppePartagee: null } }
     },
     forfaitAnnuel: null,
     frequence: '1 paire par an',

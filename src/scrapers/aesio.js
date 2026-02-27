@@ -31,9 +31,9 @@ function getVerifiedData() {
     nom: 'Aésio Mutuelle',
     siren: '775627391',
     formules: {
-      'Santé Particuliers N3': { pourcentageBR: 150 },
-      'Santé Pro N5': { pourcentageBR: 350 },
-      'Santé Pro N6': { pourcentageBR: 500 }
+      'Santé Particuliers N3': { pourcentageBR: 150, forfaitPodologie: { montantAnnuel: 90, montantParSeance: 30, nbSeancesMax: 3, enveloppePartagee: 'médecines complémentaires' } },
+      'Santé Pro N5': { pourcentageBR: 350, forfaitPodologie: { montantAnnuel: 110, montantParSeance: null, nbSeancesMax: null, enveloppePartagee: 'médecines douces' } },
+      'Santé Pro N6': { pourcentageBR: 500, forfaitPodologie: { montantAnnuel: 150, montantParSeance: null, nbSeancesMax: null, enveloppePartagee: 'médecines douces' } }
     },
     forfaitAnnuel: null,
     frequence: '1 paire par an',

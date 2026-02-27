@@ -21,11 +21,11 @@ function getVerifiedData() {
     siren: '378724530',
     formules: {
       'Santé Mix N1': { pourcentageBR: 100 },
-      'Santé Mix N2': { pourcentageBR: 100 },
-      'Santé Mix N3': { pourcentageBR: 125 },
-      'Santé Mix N4': { pourcentageBR: 150 },
-      'Santé Mix N5': { pourcentageBR: 175 },
-      'Santé Mix N6': { pourcentageBR: 200 },
+      'Santé Mix N2': { pourcentageBR: 100, forfaitPodologie: { montantAnnuel: 40, montantParSeance: null, nbSeancesMax: null, enveloppePartagee: 'médecines naturelles' } },
+      'Santé Mix N3': { pourcentageBR: 125, forfaitPodologie: { montantAnnuel: 60, montantParSeance: null, nbSeancesMax: null, enveloppePartagee: 'médecines naturelles' } },
+      'Santé Mix N4': { pourcentageBR: 150, forfaitPodologie: { montantAnnuel: 80, montantParSeance: null, nbSeancesMax: null, enveloppePartagee: 'médecines naturelles' } },
+      'Santé Mix N5': { pourcentageBR: 175, forfaitPodologie: { montantAnnuel: 100, montantParSeance: null, nbSeancesMax: null, enveloppePartagee: 'médecines naturelles' } },
+      'Santé Mix N6': { pourcentageBR: 200, forfaitPodologie: { montantAnnuel: 120, montantParSeance: null, nbSeancesMax: null, enveloppePartagee: 'médecines naturelles' } },
       'Santé Mix N7': { pourcentageBR: 300 }
     },
     forfaitAnnuel: null,

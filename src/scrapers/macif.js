@@ -21,10 +21,10 @@ function getVerifiedData() {
     siren: '779558501',
     formules: {
       'Vitamin V1': { pourcentageBR: 100 },
-      'Vitamin V2': { pourcentageBR: 125 },
-      'Vitamin V3': { pourcentageBR: 150 },
-      'Vitamin V4': { pourcentageBR: 175 },
-      'Vitamin V5': { pourcentageBR: 200 }
+      'Vitamin V2': { pourcentageBR: 125, forfaitPodologie: { montantAnnuel: 40, montantParSeance: 20, nbSeancesMax: 2, enveloppePartagee: 'médecines douces' } },
+      'Vitamin V3': { pourcentageBR: 150, forfaitPodologie: { montantAnnuel: 75, montantParSeance: 25, nbSeancesMax: 3, enveloppePartagee: 'médecines douces' } },
+      'Vitamin V4': { pourcentageBR: 175, forfaitPodologie: { montantAnnuel: 120, montantParSeance: 30, nbSeancesMax: 4, enveloppePartagee: 'médecines douces' } },
+      'Vitamin V5': { pourcentageBR: 200, forfaitPodologie: { montantAnnuel: 175, montantParSeance: 35, nbSeancesMax: 5, enveloppePartagee: 'médecines douces' } }
     },
     forfaitAnnuel: null,
     frequence: '1 paire par an',

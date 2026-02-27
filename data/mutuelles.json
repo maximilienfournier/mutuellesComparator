@@ -6,11 +6,23 @@
     "formules": {
       "Équipement 1★": {
         "pourcentageBR": 100,
-        "forfaitAnnuel": 0
+        "forfaitAnnuel": 0,
+        "forfaitPodologie": {
+          "montantAnnuel": 35,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": null
+        }
       },
       "Équipement 2★": {
         "pourcentageBR": 100,
-        "forfaitAnnuel": 100
+        "forfaitAnnuel": 100,
+        "forfaitPodologie": {
+          "montantAnnuel": 35,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": null
+        }
       },
       "Équipement 3★": {
         "pourcentageBR": 100,
@@ -36,10 +48,22 @@
     "codesAMC": ["775685399", "440363588"],
     "formules": {
       "Initiale": {
-        "pourcentageBR": 100
+        "pourcentageBR": 100,
+        "forfaitPodologie": {
+          "montantAnnuel": 80,
+          "montantParSeance": 40,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Référence": {
-        "pourcentageBR": 230
+        "pourcentageBR": 230,
+        "forfaitPodologie": {
+          "montantAnnuel": 100,
+          "montantParSeance": 40,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Intégrale": {
         "pourcentageBR": 350,
@@ -110,6 +134,7 @@
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale. Produit Efficience Santé distribué par MGEN Filia.",
+    "forfaitPodologieVerifie": false,
     "dataSource": "official",
     "confidenceScore": 0.85,
     "lastUpdated": "2026-02-25"
@@ -126,13 +151,31 @@
         "pourcentageBR": 125
       },
       "Niveau 3": {
-        "pourcentageBR": 150
+        "pourcentageBR": 150,
+        "forfaitPodologie": {
+          "montantAnnuel": 80,
+          "montantParSeance": 10,
+          "nbSeancesMax": null,
+          "enveloppePartagee": null
+        }
       },
       "Niveau 4": {
-        "pourcentageBR": 175
+        "pourcentageBR": 175,
+        "forfaitPodologie": {
+          "montantAnnuel": 120,
+          "montantParSeance": 15,
+          "nbSeancesMax": null,
+          "enveloppePartagee": null
+        }
       },
       "Niveau 5": {
-        "pourcentageBR": 200
+        "pourcentageBR": 200,
+        "forfaitPodologie": {
+          "montantAnnuel": 160,
+          "montantParSeance": 20,
+          "nbSeancesMax": null,
+          "enveloppePartagee": null
+        }
       }
     },
     "forfaitAnnuel": null,
@@ -151,16 +194,40 @@
         "pourcentageBR": 100
       },
       "Protecvia Indice 45": {
-        "pourcentageBR": 125
+        "pourcentageBR": 125,
+        "forfaitPodologie": {
+          "montantAnnuel": 80,
+          "montantParSeance": 20,
+          "nbSeancesMax": 4,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Protecvia Indice 60": {
-        "pourcentageBR": 150
+        "pourcentageBR": 150,
+        "forfaitPodologie": {
+          "montantAnnuel": 100,
+          "montantParSeance": 25,
+          "nbSeancesMax": 4,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Protecvia Indice 90": {
-        "pourcentageBR": 200
+        "pourcentageBR": 200,
+        "forfaitPodologie": {
+          "montantAnnuel": 120,
+          "montantParSeance": 30,
+          "nbSeancesMax": 4,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Protecvia Indice 120": {
-        "pourcentageBR": 250
+        "pourcentageBR": 250,
+        "forfaitPodologie": {
+          "montantAnnuel": 160,
+          "montantParSeance": 40,
+          "nbSeancesMax": 4,
+          "enveloppePartagee": "médecines douces"
+        }
       }
     },
     "forfaitAnnuel": null,
@@ -208,16 +275,40 @@
         "pourcentageBR": 100
       },
       "Vivazen 2": {
-        "pourcentageBR": 100
+        "pourcentageBR": 100,
+        "forfaitPodologie": {
+          "montantAnnuel": 50,
+          "montantParSeance": 25,
+          "nbSeancesMax": 2,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Vivazen 3": {
-        "pourcentageBR": 150
+        "pourcentageBR": 150,
+        "forfaitPodologie": {
+          "montantAnnuel": 90,
+          "montantParSeance": 30,
+          "nbSeancesMax": 3,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Vivazen 4": {
-        "pourcentageBR": 200
+        "pourcentageBR": 200,
+        "forfaitPodologie": {
+          "montantAnnuel": 105,
+          "montantParSeance": 35,
+          "nbSeancesMax": 3,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Vivazen 5": {
-        "pourcentageBR": 250
+        "pourcentageBR": 250,
+        "forfaitPodologie": {
+          "montantAnnuel": 200,
+          "montantParSeance": 50,
+          "nbSeancesMax": 4,
+          "enveloppePartagee": "médecines douces"
+        }
       }
     },
     "forfaitAnnuel": null,
@@ -267,19 +358,49 @@
         "pourcentageBR": 100
       },
       "Santé Pro P1": {
-        "pourcentageBR": 100
+        "pourcentageBR": 100,
+        "forfaitPodologie": {
+          "montantAnnuel": 50,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Santé Pro P2": {
-        "pourcentageBR": 150
+        "pourcentageBR": 150,
+        "forfaitPodologie": {
+          "montantAnnuel": 60,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Santé Pro P3": {
-        "pourcentageBR": 200
+        "pourcentageBR": 200,
+        "forfaitPodologie": {
+          "montantAnnuel": 100,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Santé Pro P4": {
-        "pourcentageBR": 300
+        "pourcentageBR": 300,
+        "forfaitPodologie": {
+          "montantAnnuel": 150,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Santé Pro P5": {
-        "pourcentageBR": 500
+        "pourcentageBR": 500,
+        "forfaitPodologie": {
+          "montantAnnuel": 200,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Seniors 1S": {
         "pourcentageBR": 100
@@ -432,6 +553,7 @@
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
+    "forfaitPodologieVerifie": false,
     "dataSource": "official",
     "confidenceScore": 0.9,
     "lastUpdated": "2026-02-25"
@@ -463,6 +585,7 @@
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
+    "forfaitPodologieVerifie": false,
     "dataSource": "official",
     "confidenceScore": 0.9,
     "lastUpdated": "2026-02-25"
@@ -501,13 +624,31 @@
     "codesAMC": ["98532001"],
     "formules": {
       "Santé Particuliers N3": {
-        "pourcentageBR": 150
+        "pourcentageBR": 150,
+        "forfaitPodologie": {
+          "montantAnnuel": 90,
+          "montantParSeance": 30,
+          "nbSeancesMax": 3,
+          "enveloppePartagee": "médecines complémentaires"
+        }
       },
       "Santé Pro N5": {
-        "pourcentageBR": 350
+        "pourcentageBR": 350,
+        "forfaitPodologie": {
+          "montantAnnuel": 110,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Santé Pro N6": {
-        "pourcentageBR": 500
+        "pourcentageBR": 500,
+        "forfaitPodologie": {
+          "montantAnnuel": 150,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines douces"
+        }
       }
     },
     "forfaitAnnuel": null,
@@ -538,6 +679,7 @@
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
+    "forfaitPodologieVerifie": false,
     "dataSource": "official",
     "confidenceScore": 0.9,
     "lastUpdated": "2026-02-25"
@@ -571,6 +713,7 @@
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
+    "forfaitPodologieVerifie": false,
     "dataSource": "official",
     "confidenceScore": 0.9,
     "lastUpdated": "2026-02-25"
@@ -581,13 +724,31 @@
     "codesAMC": ["499982098"],
     "formules": {
       "Mgéfi Maitri": {
-        "pourcentageBR": 100
+        "pourcentageBR": 100,
+        "forfaitPodologie": {
+          "montantAnnuel": 75,
+          "montantParSeance": 25,
+          "nbSeancesMax": 3,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Mgéfi Vita 2": {
-        "pourcentageBR": 200
+        "pourcentageBR": 200,
+        "forfaitPodologie": {
+          "montantAnnuel": 100,
+          "montantParSeance": 25,
+          "nbSeancesMax": 4,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Mgéfi Multi 2": {
-        "pourcentageBR": 200
+        "pourcentageBR": 200,
+        "forfaitPodologie": {
+          "montantAnnuel": 125,
+          "montantParSeance": 25,
+          "nbSeancesMax": 5,
+          "enveloppePartagee": "médecines douces"
+        }
       }
     },
     "forfaitAnnuel": null,
@@ -627,6 +788,7 @@
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
+    "forfaitPodologieVerifie": false,
     "dataSource": "official",
     "confidenceScore": 0.9,
     "lastUpdated": "2026-02-25"
@@ -642,15 +804,33 @@
       },
       "Équilibre": {
         "pourcentageBR": 150,
-        "forfaitAnnuel": 100
+        "forfaitAnnuel": 100,
+        "forfaitPodologie": {
+          "montantAnnuel": 90,
+          "montantParSeance": 30,
+          "nbSeancesMax": 3,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Confort": {
         "pourcentageBR": 200,
-        "forfaitAnnuel": 150
+        "forfaitAnnuel": 150,
+        "forfaitPodologie": {
+          "montantAnnuel": 120,
+          "montantParSeance": 40,
+          "nbSeancesMax": 3,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Premium": {
         "pourcentageBR": 300,
-        "forfaitAnnuel": 300
+        "forfaitAnnuel": 300,
+        "forfaitPodologie": {
+          "montantAnnuel": 300,
+          "montantParSeance": 50,
+          "nbSeancesMax": 6,
+          "enveloppePartagee": "médecines douces"
+        }
       }
     },
     "forfaitAnnuel": null,
@@ -669,28 +849,76 @@
         "pourcentageBR": 100
       },
       "Niveau 2": {
-        "pourcentageBR": 100
+        "pourcentageBR": 100,
+        "forfaitPodologie": {
+          "montantAnnuel": 100,
+          "montantParSeance": 20,
+          "nbSeancesMax": 5,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Niveau 3": {
-        "pourcentageBR": 125
+        "pourcentageBR": 125,
+        "forfaitPodologie": {
+          "montantAnnuel": 150,
+          "montantParSeance": 30,
+          "nbSeancesMax": 5,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Niveau 4": {
-        "pourcentageBR": 150
+        "pourcentageBR": 150,
+        "forfaitPodologie": {
+          "montantAnnuel": 150,
+          "montantParSeance": 30,
+          "nbSeancesMax": 5,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Niveau 5": {
-        "pourcentageBR": 175
+        "pourcentageBR": 175,
+        "forfaitPodologie": {
+          "montantAnnuel": 200,
+          "montantParSeance": 40,
+          "nbSeancesMax": 5,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Niveau 6": {
-        "pourcentageBR": 200
+        "pourcentageBR": 200,
+        "forfaitPodologie": {
+          "montantAnnuel": 200,
+          "montantParSeance": 40,
+          "nbSeancesMax": 5,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Niveau 7": {
-        "pourcentageBR": 250
+        "pourcentageBR": 250,
+        "forfaitPodologie": {
+          "montantAnnuel": 250,
+          "montantParSeance": 50,
+          "nbSeancesMax": 5,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Niveau 8": {
-        "pourcentageBR": 300
+        "pourcentageBR": 300,
+        "forfaitPodologie": {
+          "montantAnnuel": 250,
+          "montantParSeance": 50,
+          "nbSeancesMax": 5,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Niveau 9": {
-        "pourcentageBR": 400
+        "pourcentageBR": 400,
+        "forfaitPodologie": {
+          "montantAnnuel": 275,
+          "montantParSeance": 55,
+          "nbSeancesMax": 5,
+          "enveloppePartagee": "médecines douces"
+        }
       }
     },
     "forfaitAnnuel": null,
@@ -709,19 +937,49 @@
         "pourcentageBR": 100
       },
       "Santé Mix N2": {
-        "pourcentageBR": 100
+        "pourcentageBR": 100,
+        "forfaitPodologie": {
+          "montantAnnuel": 40,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines naturelles"
+        }
       },
       "Santé Mix N3": {
-        "pourcentageBR": 125
+        "pourcentageBR": 125,
+        "forfaitPodologie": {
+          "montantAnnuel": 60,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines naturelles"
+        }
       },
       "Santé Mix N4": {
-        "pourcentageBR": 150
+        "pourcentageBR": 150,
+        "forfaitPodologie": {
+          "montantAnnuel": 80,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines naturelles"
+        }
       },
       "Santé Mix N5": {
-        "pourcentageBR": 175
+        "pourcentageBR": 175,
+        "forfaitPodologie": {
+          "montantAnnuel": 100,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines naturelles"
+        }
       },
       "Santé Mix N6": {
-        "pourcentageBR": 200
+        "pourcentageBR": 200,
+        "forfaitPodologie": {
+          "montantAnnuel": 120,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines naturelles"
+        }
       },
       "Santé Mix N7": {
         "pourcentageBR": 300
@@ -743,16 +1001,40 @@
         "pourcentageBR": 100
       },
       "Vitamin V2": {
-        "pourcentageBR": 125
+        "pourcentageBR": 125,
+        "forfaitPodologie": {
+          "montantAnnuel": 40,
+          "montantParSeance": 20,
+          "nbSeancesMax": 2,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Vitamin V3": {
-        "pourcentageBR": 150
+        "pourcentageBR": 150,
+        "forfaitPodologie": {
+          "montantAnnuel": 75,
+          "montantParSeance": 25,
+          "nbSeancesMax": 3,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Vitamin V4": {
-        "pourcentageBR": 175
+        "pourcentageBR": 175,
+        "forfaitPodologie": {
+          "montantAnnuel": 120,
+          "montantParSeance": 30,
+          "nbSeancesMax": 4,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Vitamin V5": {
-        "pourcentageBR": 200
+        "pourcentageBR": 200,
+        "forfaitPodologie": {
+          "montantAnnuel": 175,
+          "montantParSeance": 35,
+          "nbSeancesMax": 5,
+          "enveloppePartagee": "médecines douces"
+        }
       }
     },
     "forfaitAnnuel": null,

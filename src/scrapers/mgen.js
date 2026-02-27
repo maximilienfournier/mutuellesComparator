@@ -89,8 +89,8 @@ function getVerifiedData() {
     nom: 'MGEN',
     siren: '775685399',
     formules: {
-      'Initiale': { pourcentageBR: 100 },
-      'Référence': { pourcentageBR: 230 },
+      'Initiale': { pourcentageBR: 100, forfaitPodologie: { montantAnnuel: 80, montantParSeance: 40, nbSeancesMax: null, enveloppePartagee: 'médecines douces' } },
+      'Référence': { pourcentageBR: 230, forfaitPodologie: { montantAnnuel: 100, montantParSeance: 40, nbSeancesMax: null, enveloppePartagee: 'médecines douces' } },
       'Intégrale': { pourcentageBR: 350, forfaitPodologie: { montantAnnuel: 160, montantParSeance: 40, nbSeancesMax: null, enveloppePartagee: 'médecines douces' } }
     },
     forfaitAnnuel: null,
