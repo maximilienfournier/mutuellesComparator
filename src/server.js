@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const { loadMutuelles, calculerRemboursement, BASE_SECU, TAUX_SECU } = require('./comparator');
+const { loadMutuelles, calculerRemboursement, simulerDeuxFactures, BASE_SECU, TAUX_SECU } = require('./comparator');
 const { genererDevisHTML } = require('./devis');
 
 const app = express();
@@ -17,7 +17,8 @@ app.get('/api/mutuelles', (req, res) => {
     formules: Object.keys(m.formules).map(nom => ({
       nom,
       pourcentageBR: m.formules[nom].pourcentageBR,
-      forfaitAnnuel: m.formules[nom].forfaitAnnuel || 0
+      forfaitAnnuel: m.formules[nom].forfaitAnnuel || 0,
+      forfaitPodologie: m.formules[nom].forfaitPodologie || null
     })),
     frequence: m.frequence,
     conditions: m.conditions,
@@ -55,6 +56,33 @@ app.get('/api/calcul', (req, res) => {
       dataSource: mut.dataSource,
       confidenceScore: mut.confidenceScore
     });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// GET /api/simulation?mutuelle=X&formule=Y&prixSemelles=S&prixBilan=B
+app.get('/api/simulation', (req, res) => {
+  const { mutuelle: nomMutuelle, formule, prixSemelles, prixBilan } = req.query;
+
+  if (!nomMutuelle || !formule || !prixSemelles || !prixBilan) {
+    return res.status(400).json({ error: 'Parametres requis: mutuelle, formule, prixSemelles, prixBilan' });
+  }
+
+  const mut = mutuelles.find(m => m.nom === nomMutuelle);
+  if (!mut) {
+    return res.status(404).json({ error: `Mutuelle "${nomMutuelle}" introuvable` });
+  }
+
+  const ps = parseFloat(prixSemelles);
+  const pb = parseFloat(prixBilan);
+  if (isNaN(ps) || ps <= 0 || isNaN(pb) || pb <= 0) {
+    return res.status(400).json({ error: 'Prix invalides' });
+  }
+
+  try {
+    const simulation = simulerDeuxFactures(mut, formule, ps, pb);
+    res.json(simulation);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

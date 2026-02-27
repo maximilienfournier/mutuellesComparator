@@ -91,7 +91,7 @@ function getVerifiedData() {
     formules: {
       'Initiale': { pourcentageBR: 100 },
       'Référence': { pourcentageBR: 230 },
-      'Intégrale': { pourcentageBR: 350 }
+      'Intégrale': { pourcentageBR: 350, forfaitPodologie: { montantAnnuel: 160, montantParSeance: 40, nbSeancesMax: null, enveloppePartagee: 'médecines douces' } }
     },
     forfaitAnnuel: null,
     frequence: '1 paire par an',

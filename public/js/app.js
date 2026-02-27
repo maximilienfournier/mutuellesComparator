@@ -19,6 +19,11 @@
   const resultSecu = document.getElementById('result-secu');
   const resultMutuelle = document.getElementById('result-mutuelle');
   const resultRac = document.getElementById('result-rac');
+  const stepSimulation = document.getElementById('step-simulation');
+  const simulationIntro = document.getElementById('simulation-intro');
+  const bilanInput = document.getElementById('bilan-input');
+  const simulationResult = document.getElementById('simulation-result');
+  const simulationGain = document.getElementById('simulation-gain');
   const stepDevis = document.getElementById('step-devis');
   const btnDevis = document.getElementById('btn-devis');
   const patientInput = document.getElementById('patient-input');
@@ -125,8 +130,10 @@
     mutuelleInfo.classList.remove('hidden');
     stepPlafond.classList.add('hidden');
     stepDetail.classList.add('hidden');
+    stepSimulation.classList.add('hidden');
     stepDevis.classList.add('hidden');
     resultDetail.classList.add('hidden');
+    simulationResult.classList.add('hidden');
   }
 
   function setBadge(dataSource, score) {
@@ -159,9 +166,12 @@
 
     stepPlafond.classList.remove('hidden');
     stepDetail.classList.remove('hidden');
+    stepSimulation.classList.add('hidden');
     stepDevis.classList.add('hidden');
     resultDetail.classList.add('hidden');
+    simulationResult.classList.add('hidden');
     prixInput.value = '';
+    bilanInput.value = '';
   });
 
   // Prix input -> detailed calc
@@ -191,9 +201,76 @@
         resultRac.textContent = data.resteACharge.toFixed(2) + ' \u20AC';
         resultDetail.classList.remove('hidden');
         stepDevis.classList.remove('hidden');
+
+        // Show simulation section if forfait podologie is available
+        var formule = selectedMutuelle.formules.find(function (f) { return f.nom === formuleSelect.value; });
+        if (formule && formule.forfaitPodologie) {
+          var fp = formule.forfaitPodologie;
+          var desc = 'Forfait podologie disponible : ';
+          if (fp.montantParSeance) desc += fp.montantParSeance + ' \u20AC/seance';
+          if (fp.montantParSeance && fp.montantAnnuel) desc += ', ';
+          if (fp.montantAnnuel) desc += fp.montantAnnuel + ' \u20AC/an max';
+          if (fp.nbSeancesMax) desc += ', ' + fp.nbSeancesMax + ' seances/an';
+          if (fp.enveloppePartagee) desc += ' (enveloppe partagee : ' + fp.enveloppePartagee + ')';
+          simulationIntro.textContent = desc;
+          stepSimulation.classList.remove('hidden');
+        } else {
+          stepSimulation.classList.add('hidden');
+        }
       })
       .catch(function () {
         resultDetail.classList.add('hidden');
+      });
+  });
+
+  // Bilan input -> simulation
+  bilanInput.addEventListener('input', function () {
+    var prixBilan = parseFloat(bilanInput.value);
+    var prixSemelles = parseFloat(prixInput.value);
+    if (isNaN(prixBilan) || prixBilan <= 0 || isNaN(prixSemelles) || prixSemelles <= 0 || !selectedMutuelle || !formuleSelect.value) {
+      simulationResult.classList.add('hidden');
+      return;
+    }
+
+    var params = new URLSearchParams({
+      mutuelle: selectedMutuelle.nom,
+      formule: formuleSelect.value,
+      prixSemelles: prixSemelles.toString(),
+      prixBilan: prixBilan.toString()
+    });
+
+    fetch('/api/simulation?' + params.toString())
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data.error) {
+          simulationResult.classList.add('hidden');
+          return;
+        }
+
+        document.getElementById('sim-unique-prix').textContent = data.prixTotal.toFixed(2) + ' \u20AC';
+        document.getElementById('sim-unique-secu').textContent = data.factureUnique.remboursementSecu.toFixed(2) + ' \u20AC';
+        document.getElementById('sim-unique-mutuelle').textContent = data.factureUnique.remboursementMutuelle.toFixed(2) + ' \u20AC';
+        document.getElementById('sim-unique-rac').textContent = data.factureUnique.resteACharge.toFixed(2) + ' \u20AC';
+
+        document.getElementById('sim-deux-semelles-rac').textContent = 'RAC ' + data.deuxFactures.semelles.resteACharge.toFixed(2) + ' \u20AC';
+        document.getElementById('sim-deux-bilan-remb').textContent = data.deuxFactures.bilan.remboursementPodologie.toFixed(2) + ' \u20AC';
+        document.getElementById('sim-deux-rac').textContent = data.deuxFactures.resteACharge.toFixed(2) + ' \u20AC';
+
+        if (data.gain > 0) {
+          simulationGain.textContent = 'Gain avec deux factures : ' + data.gain.toFixed(2) + ' \u20AC';
+          simulationGain.className = 'simulation-gain gain-positive';
+        } else if (data.gain === 0) {
+          simulationGain.textContent = 'Pas de difference entre les deux scenarios';
+          simulationGain.className = 'simulation-gain gain-zero';
+        } else {
+          simulationGain.textContent = 'Facture unique plus avantageuse : ' + Math.abs(data.gain).toFixed(2) + ' \u20AC';
+          simulationGain.className = 'simulation-gain gain-negative';
+        }
+
+        simulationResult.classList.remove('hidden');
+      })
+      .catch(function () {
+        simulationResult.classList.add('hidden');
       });
   });
 
