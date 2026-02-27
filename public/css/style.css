@@ -265,6 +265,19 @@ footer {
 
 footer p { margin-bottom: 4px; }
 
+/* Prix grid (two inputs side by side) */
+.prix-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .prix-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Simulation deux factures */
 .simulation-intro {
   font-size: 13px;

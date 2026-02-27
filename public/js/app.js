@@ -1,33 +1,34 @@
 (function () {
   'use strict';
 
-  let mutuelles = [];
-  let selectedMutuelle = null;
+  var mutuelles = [];
+  var selectedMutuelle = null;
+  var hasForfaitPodo = false;
 
-  const searchInput = document.getElementById('search-input');
-  const suggestions = document.getElementById('suggestions');
-  const mutuelleInfo = document.getElementById('mutuelle-info');
-  const mutuelleNom = document.getElementById('mutuelle-nom');
-  const confidenceBadge = document.getElementById('confidence-badge');
-  const formuleSelect = document.getElementById('formule-select');
-  const stepPlafond = document.getElementById('step-plafond');
-  const plafondAmount = document.getElementById('plafond-amount');
-  const plafondDetail = document.getElementById('plafond-detail');
-  const stepDetail = document.getElementById('step-detail');
-  const prixInput = document.getElementById('prix-input');
-  const resultDetail = document.getElementById('result-detail');
-  const resultSecu = document.getElementById('result-secu');
-  const resultMutuelle = document.getElementById('result-mutuelle');
-  const resultRac = document.getElementById('result-rac');
-  const stepSimulation = document.getElementById('step-simulation');
-  const simulationIntro = document.getElementById('simulation-intro');
-  const bilanInput = document.getElementById('bilan-input');
-  const simulationResult = document.getElementById('simulation-result');
-  const simulationGain = document.getElementById('simulation-gain');
-  const stepDevis = document.getElementById('step-devis');
-  const btnDevis = document.getElementById('btn-devis');
-  const patientInput = document.getElementById('patient-input');
-  const podologueInput = document.getElementById('podologue-input');
+  var searchInput = document.getElementById('search-input');
+  var suggestions = document.getElementById('suggestions');
+  var mutuelleInfo = document.getElementById('mutuelle-info');
+  var mutuelleNom = document.getElementById('mutuelle-nom');
+  var confidenceBadge = document.getElementById('confidence-badge');
+  var formuleSelect = document.getElementById('formule-select');
+  var stepPlafond = document.getElementById('step-plafond');
+  var plafondAmount = document.getElementById('plafond-amount');
+  var plafondDetail = document.getElementById('plafond-detail');
+  var stepPrix = document.getElementById('step-prix');
+  var prixFieldsSingle = document.getElementById('prix-fields-single');
+  var prixFieldsDouble = document.getElementById('prix-fields-double');
+  var prixInput = document.getElementById('prix-input');
+  var prixTotalInput = document.getElementById('prix-total-input');
+  var bilanInput = document.getElementById('bilan-input');
+  var simulationIntro = document.getElementById('simulation-intro');
+  var stepResults = document.getElementById('step-results');
+  var resultSimple = document.getElementById('result-simple');
+  var resultComparison = document.getElementById('result-comparison');
+  var simulationGain = document.getElementById('simulation-gain');
+  var stepDevis = document.getElementById('step-devis');
+  var btnDevis = document.getElementById('btn-devis');
+  var patientInput = document.getElementById('patient-input');
+  var podologueInput = document.getElementById('podologue-input');
 
   // Load mutuelles on startup
   fetch('/api/mutuelles')
@@ -42,8 +43,7 @@
       suggestions.classList.add('hidden');
       return;
     }
-    var matches = findMatches(query);
-    renderSuggestions(matches);
+    renderSuggestions(findMatches(query));
   });
 
   searchInput.addEventListener('keydown', function (e) {
@@ -69,7 +69,6 @@
     }
   });
 
-  // Close suggestions on outside click
   document.addEventListener('click', function (e) {
     if (!e.target.closest('.search-group')) {
       suggestions.classList.add('hidden');
@@ -79,7 +78,6 @@
   function findMatches(query) {
     var q = query.toLowerCase();
     var isNumeric = /^\d+$/.test(query);
-
     return mutuelles.filter(function (m) {
       if (isNumeric) {
         return m.codesAMC && m.codesAMC.some(function (code) {
@@ -102,9 +100,7 @@
         ? '<span class="amc-hint">AMC: ' + m.codesAMC.join(', ') + '</span>'
         : '';
       li.innerHTML = m.nom + amcText;
-      li.addEventListener('click', function () {
-        selectMutuelle(m);
-      });
+      li.addEventListener('click', function () { selectMutuelle(m); });
       suggestions.appendChild(li);
     });
     suggestions.classList.remove('hidden');
@@ -118,7 +114,6 @@
     mutuelleNom.textContent = m.nom;
     setBadge(m.dataSource, m.confidenceScore);
 
-    // Populate formules
     formuleSelect.innerHTML = '<option value="">-- Selectionnez une formule --</option>';
     m.formules.forEach(function (f) {
       var opt = document.createElement('option');
@@ -128,28 +123,30 @@
     });
 
     mutuelleInfo.classList.remove('hidden');
-    stepPlafond.classList.add('hidden');
-    stepDetail.classList.add('hidden');
-    stepSimulation.classList.add('hidden');
-    stepDevis.classList.add('hidden');
-    resultDetail.classList.add('hidden');
-    simulationResult.classList.add('hidden');
+    hideSteps();
   }
 
-  function setBadge(dataSource, score) {
+  function setBadge(dataSource) {
     var labels = { official: 'Officiel', scraped: 'Scrape', estimated: 'Estime' };
     var classes = { official: 'badge-official', scraped: 'badge-scraped', estimated: 'badge-estimated' };
     confidenceBadge.textContent = labels[dataSource] || dataSource;
     confidenceBadge.className = 'badge ' + (classes[dataSource] || 'badge-estimated');
   }
 
-  // Formule selection -> show plafond
+  function hideSteps() {
+    stepPlafond.classList.add('hidden');
+    stepPrix.classList.add('hidden');
+    stepResults.classList.add('hidden');
+    stepDevis.classList.add('hidden');
+    resultSimple.classList.add('hidden');
+    resultComparison.classList.add('hidden');
+  }
+
+  // Formule selection
   formuleSelect.addEventListener('change', function () {
     var formuleNom = formuleSelect.value;
     if (!formuleNom || !selectedMutuelle) {
-      stepPlafond.classList.add('hidden');
-      stepDetail.classList.add('hidden');
-      stepDevis.classList.add('hidden');
+      hideSteps();
       return;
     }
 
@@ -164,25 +161,49 @@
       + (formule.forfaitAnnuel ? ' + forfait ' + formule.forfaitAnnuel + ' \u20AC' : '')
       + ' | Base Secu : ' + BASE_SECU.toFixed(2) + ' \u20AC';
 
+    // Check if this formule has forfait podologie
+    hasForfaitPodo = !!(formule.forfaitPodologie);
+
+    if (hasForfaitPodo) {
+      var fp = formule.forfaitPodologie;
+      var desc = 'Forfait podologie : ';
+      var parts = [];
+      if (fp.montantParSeance) parts.push(fp.montantParSeance + ' \u20AC/seance');
+      if (fp.montantAnnuel) parts.push(fp.montantAnnuel + ' \u20AC/an max');
+      if (fp.nbSeancesMax) parts.push(fp.nbSeancesMax + ' seances/an');
+      desc += parts.join(', ');
+      if (fp.enveloppePartagee) desc += ' (enveloppe partagee : ' + fp.enveloppePartagee + ')';
+      simulationIntro.textContent = desc;
+      prixFieldsSingle.classList.add('hidden');
+      prixFieldsDouble.classList.remove('hidden');
+    } else {
+      prixFieldsSingle.classList.remove('hidden');
+      prixFieldsDouble.classList.add('hidden');
+    }
+
     stepPlafond.classList.remove('hidden');
-    stepDetail.classList.remove('hidden');
-    stepSimulation.classList.add('hidden');
+    stepPrix.classList.remove('hidden');
+    stepResults.classList.add('hidden');
     stepDevis.classList.add('hidden');
-    resultDetail.classList.add('hidden');
-    simulationResult.classList.add('hidden');
+    resultSimple.classList.add('hidden');
+    resultComparison.classList.add('hidden');
     prixInput.value = '';
+    prixTotalInput.value = '';
     bilanInput.value = '';
   });
 
-  // Prix input -> detailed calc
+  // Simple mode: prix input
   prixInput.addEventListener('input', function () {
     var prix = parseFloat(prixInput.value);
     if (isNaN(prix) || prix <= 0 || !selectedMutuelle || !formuleSelect.value) {
-      resultDetail.classList.add('hidden');
+      stepResults.classList.add('hidden');
       stepDevis.classList.add('hidden');
       return;
     }
+    fetchSimpleCalc(prix);
+  });
 
+  function fetchSimpleCalc(prix) {
     var params = new URLSearchParams({
       mutuelle: selectedMutuelle.nom,
       formule: formuleSelect.value,
@@ -193,45 +214,66 @@
       .then(function (r) { return r.json(); })
       .then(function (data) {
         if (data.error) {
-          resultDetail.classList.add('hidden');
+          stepResults.classList.add('hidden');
           return;
         }
-        resultSecu.textContent = data.remboursementSecu.toFixed(2) + ' \u20AC';
-        resultMutuelle.textContent = data.remboursementMutuelle.toFixed(2) + ' \u20AC';
-        resultRac.textContent = data.resteACharge.toFixed(2) + ' \u20AC';
-        resultDetail.classList.remove('hidden');
+        document.getElementById('result-secu').textContent = data.remboursementSecu.toFixed(2) + ' \u20AC';
+        document.getElementById('result-mutuelle').textContent = data.remboursementMutuelle.toFixed(2) + ' \u20AC';
+        document.getElementById('result-rac').textContent = data.resteACharge.toFixed(2) + ' \u20AC';
+        resultSimple.classList.remove('hidden');
+        resultComparison.classList.add('hidden');
+        stepResults.classList.remove('hidden');
         stepDevis.classList.remove('hidden');
-
-        // Show simulation section if forfait podologie is available
-        var formule = selectedMutuelle.formules.find(function (f) { return f.nom === formuleSelect.value; });
-        if (formule && formule.forfaitPodologie) {
-          var fp = formule.forfaitPodologie;
-          var desc = 'Forfait podologie disponible : ';
-          if (fp.montantParSeance) desc += fp.montantParSeance + ' \u20AC/seance';
-          if (fp.montantParSeance && fp.montantAnnuel) desc += ', ';
-          if (fp.montantAnnuel) desc += fp.montantAnnuel + ' \u20AC/an max';
-          if (fp.nbSeancesMax) desc += ', ' + fp.nbSeancesMax + ' seances/an';
-          if (fp.enveloppePartagee) desc += ' (enveloppe partagee : ' + fp.enveloppePartagee + ')';
-          simulationIntro.textContent = desc;
-          stepSimulation.classList.remove('hidden');
-        } else {
-          stepSimulation.classList.add('hidden');
-        }
       })
       .catch(function () {
-        resultDetail.classList.add('hidden');
+        stepResults.classList.add('hidden');
       });
-  });
+  }
 
-  // Bilan input -> simulation
-  bilanInput.addEventListener('input', function () {
+  // Double mode: prix total + bilan → triggers comparison
+  function onDoubleInput() {
+    var prixTotal = parseFloat(prixTotalInput.value);
     var prixBilan = parseFloat(bilanInput.value);
-    var prixSemelles = parseFloat(prixInput.value);
-    if (isNaN(prixBilan) || prixBilan <= 0 || isNaN(prixSemelles) || prixSemelles <= 0 || !selectedMutuelle || !formuleSelect.value) {
-      simulationResult.classList.add('hidden');
+
+    if (isNaN(prixTotal) || prixTotal <= 0 || !selectedMutuelle || !formuleSelect.value) {
+      stepResults.classList.add('hidden');
+      stepDevis.classList.add('hidden');
       return;
     }
 
+    // If no bilan entered yet, show simple calc with the total price
+    if (isNaN(prixBilan) || prixBilan <= 0) {
+      var params = new URLSearchParams({
+        mutuelle: selectedMutuelle.nom,
+        formule: formuleSelect.value,
+        prix: prixTotal.toString()
+      });
+
+      fetch('/api/calcul?' + params.toString())
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data.error) {
+            stepResults.classList.add('hidden');
+            return;
+          }
+          document.getElementById('result-secu').textContent = data.remboursementSecu.toFixed(2) + ' \u20AC';
+          document.getElementById('result-mutuelle').textContent = data.remboursementMutuelle.toFixed(2) + ' \u20AC';
+          document.getElementById('result-rac').textContent = data.resteACharge.toFixed(2) + ' \u20AC';
+          resultSimple.classList.remove('hidden');
+          resultComparison.classList.add('hidden');
+          stepResults.classList.remove('hidden');
+          stepDevis.classList.remove('hidden');
+        })
+        .catch(function () { stepResults.classList.add('hidden'); });
+      return;
+    }
+
+    if (prixBilan >= prixTotal) {
+      stepResults.classList.add('hidden');
+      return;
+    }
+
+    var prixSemelles = prixTotal - prixBilan;
     var params = new URLSearchParams({
       mutuelle: selectedMutuelle.nom,
       formule: formuleSelect.value,
@@ -243,7 +285,7 @@
       .then(function (r) { return r.json(); })
       .then(function (data) {
         if (data.error) {
-          simulationResult.classList.add('hidden');
+          stepResults.classList.add('hidden');
           return;
         }
 
@@ -252,31 +294,37 @@
         document.getElementById('sim-unique-mutuelle').textContent = data.factureUnique.remboursementMutuelle.toFixed(2) + ' \u20AC';
         document.getElementById('sim-unique-rac').textContent = data.factureUnique.resteACharge.toFixed(2) + ' \u20AC';
 
-        document.getElementById('sim-deux-semelles-rac').textContent = 'RAC ' + data.deuxFactures.semelles.resteACharge.toFixed(2) + ' \u20AC';
+        document.getElementById('sim-deux-semelles-rac').textContent = data.deuxFactures.semelles.resteACharge.toFixed(2) + ' \u20AC';
         document.getElementById('sim-deux-bilan-remb').textContent = data.deuxFactures.bilan.remboursementPodologie.toFixed(2) + ' \u20AC';
         document.getElementById('sim-deux-rac').textContent = data.deuxFactures.resteACharge.toFixed(2) + ' \u20AC';
 
         if (data.gain > 0) {
-          simulationGain.textContent = 'Gain avec deux factures : ' + data.gain.toFixed(2) + ' \u20AC';
+          simulationGain.textContent = 'Deux factures : economie de ' + data.gain.toFixed(2) + ' \u20AC pour le patient';
           simulationGain.className = 'simulation-gain gain-positive';
         } else if (data.gain === 0) {
-          simulationGain.textContent = 'Pas de difference entre les deux scenarios';
+          simulationGain.textContent = 'Aucune difference entre les deux scenarios';
           simulationGain.className = 'simulation-gain gain-zero';
         } else {
-          simulationGain.textContent = 'Facture unique plus avantageuse : ' + Math.abs(data.gain).toFixed(2) + ' \u20AC';
+          simulationGain.textContent = 'Facture unique plus avantageuse (' + Math.abs(data.gain).toFixed(2) + ' \u20AC)';
           simulationGain.className = 'simulation-gain gain-negative';
         }
 
-        simulationResult.classList.remove('hidden');
+        resultSimple.classList.add('hidden');
+        resultComparison.classList.remove('hidden');
+        stepResults.classList.remove('hidden');
+        stepDevis.classList.remove('hidden');
       })
       .catch(function () {
-        simulationResult.classList.add('hidden');
+        stepResults.classList.add('hidden');
       });
-  });
+  }
+
+  prixTotalInput.addEventListener('input', onDoubleInput);
+  bilanInput.addEventListener('input', onDoubleInput);
 
   // Generate devis
   btnDevis.addEventListener('click', function () {
-    var prix = parseFloat(prixInput.value);
+    var prix = hasForfaitPodo ? parseFloat(prixTotalInput.value) : parseFloat(prixInput.value);
     if (isNaN(prix) || prix <= 0 || !selectedMutuelle || !formuleSelect.value) return;
 
     var params = new URLSearchParams({
