@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const { loadMutuelles, calculerRemboursement, simulerDeuxFactures, BASE_SECU, TAUX_SECU } = require('./comparator');
+const { loadMutuelles, calculerRemboursement, simulerDeuxFactures, optimiserRepartition, BASE_SECU, TAUX_SECU } = require('./comparator');
 const { genererDevisHTML } = require('./devis');
 
 const app = express();
@@ -83,6 +83,32 @@ app.get('/api/simulation', (req, res) => {
   try {
     const simulation = simulerDeuxFactures(mut, formule, ps, pb);
     res.json(simulation);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// GET /api/optimisation?mutuelle=X&formule=Y&prixTotal=Z
+app.get('/api/optimisation', (req, res) => {
+  const { mutuelle: nomMutuelle, formule, prixTotal } = req.query;
+
+  if (!nomMutuelle || !formule || !prixTotal) {
+    return res.status(400).json({ error: 'Parametres requis: mutuelle, formule, prixTotal' });
+  }
+
+  const mut = mutuelles.find(m => m.nom === nomMutuelle);
+  if (!mut) {
+    return res.status(404).json({ error: `Mutuelle "${nomMutuelle}" introuvable` });
+  }
+
+  const pt = parseFloat(prixTotal);
+  if (isNaN(pt) || pt <= 0) {
+    return res.status(400).json({ error: 'Prix total invalide' });
+  }
+
+  try {
+    const result = optimiserRepartition(mut, formule, pt);
+    res.json(result);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

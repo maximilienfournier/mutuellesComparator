@@ -357,6 +357,44 @@ footer p { margin-bottom: 4px; }
   }
 }
 
+/* Optimisation suggestion */
+.optimisation-suggestion {
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: #ebf8ff;
+  border: 2px solid #bee3f8;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.optimisation-suggestion p {
+  font-size: 14px;
+  color: #2c5282;
+  font-weight: 600;
+  flex: 1;
+}
+
+.btn-secondary {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c5282;
+  background: white;
+  border: 2px solid #2c5282;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-secondary:hover {
+  background: #2c5282;
+  color: white;
+}
+
 /* Print */
 @media print {
   body { background: white; }
