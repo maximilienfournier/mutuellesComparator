@@ -137,8 +137,8 @@ function getVerifiedData() {
     nom: MUTUELLE_NAME,
     siren: SIREN,
     formules: {
-      'Équipement 1★': { pourcentageBR: 100, forfaitAnnuel: 0 },
-      'Équipement 2★': { pourcentageBR: 100, forfaitAnnuel: 100 },
+      'Équipement 1★': { pourcentageBR: 100, forfaitAnnuel: 0, forfaitPodologie: { montantAnnuel: 35, montantParSeance: null, nbSeancesMax: null, enveloppePartagee: null } },
+      'Équipement 2★': { pourcentageBR: 100, forfaitAnnuel: 100, forfaitPodologie: { montantAnnuel: 35, montantParSeance: null, nbSeancesMax: null, enveloppePartagee: null } },
       'Équipement 3★': { pourcentageBR: 100, forfaitAnnuel: 200, forfaitPodologie: { montantAnnuel: 35, montantParSeance: null, nbSeancesMax: null, enveloppePartagee: null } }
     },
     forfaitAnnuel: null,

@@ -25,10 +25,10 @@ function getVerifiedData() {
     siren: '542073580',
     formules: {
       'Vivazen 1': { pourcentageBR: 100 },
-      'Vivazen 2': { pourcentageBR: 100 },
-      'Vivazen 3': { pourcentageBR: 150 },
-      'Vivazen 4': { pourcentageBR: 200 },
-      'Vivazen 5': { pourcentageBR: 250 }
+      'Vivazen 2': { pourcentageBR: 100, forfaitPodologie: { montantAnnuel: 50, montantParSeance: 25, nbSeancesMax: 2, enveloppePartagee: 'médecines douces' } },
+      'Vivazen 3': { pourcentageBR: 150, forfaitPodologie: { montantAnnuel: 90, montantParSeance: 30, nbSeancesMax: 3, enveloppePartagee: 'médecines douces' } },
+      'Vivazen 4': { pourcentageBR: 200, forfaitPodologie: { montantAnnuel: 105, montantParSeance: 35, nbSeancesMax: 3, enveloppePartagee: 'médecines douces' } },
+      'Vivazen 5': { pourcentageBR: 250, forfaitPodologie: { montantAnnuel: 200, montantParSeance: 50, nbSeancesMax: 4, enveloppePartagee: 'médecines douces' } }
     },
     forfaitAnnuel: null,
     frequence: '1 paire par an',

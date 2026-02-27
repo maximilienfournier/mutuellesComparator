@@ -24,10 +24,10 @@ function getVerifiedData() {
     siren: '486197757',
     formules: {
       'Protecvia Indice 30': { pourcentageBR: 100 },
-      'Protecvia Indice 45': { pourcentageBR: 125 },
-      'Protecvia Indice 60': { pourcentageBR: 150 },
-      'Protecvia Indice 90': { pourcentageBR: 200 },
-      'Protecvia Indice 120': { pourcentageBR: 250 }
+      'Protecvia Indice 45': { pourcentageBR: 125, forfaitPodologie: { montantAnnuel: 80, montantParSeance: 20, nbSeancesMax: 4, enveloppePartagee: 'médecines douces' } },
+      'Protecvia Indice 60': { pourcentageBR: 150, forfaitPodologie: { montantAnnuel: 100, montantParSeance: 25, nbSeancesMax: 4, enveloppePartagee: 'médecines douces' } },
+      'Protecvia Indice 90': { pourcentageBR: 200, forfaitPodologie: { montantAnnuel: 120, montantParSeance: 30, nbSeancesMax: 4, enveloppePartagee: 'médecines douces' } },
+      'Protecvia Indice 120': { pourcentageBR: 250, forfaitPodologie: { montantAnnuel: 160, montantParSeance: 40, nbSeancesMax: 4, enveloppePartagee: 'médecines douces' } }
     },
     forfaitAnnuel: null,
     frequence: '1 paire par an',
