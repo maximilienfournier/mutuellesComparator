@@ -139,7 +139,7 @@ function getVerifiedData() {
     formules: {
       'Équipement 1★': { pourcentageBR: 100, forfaitAnnuel: 0 },
       'Équipement 2★': { pourcentageBR: 100, forfaitAnnuel: 100 },
-      'Équipement 3★': { pourcentageBR: 100, forfaitAnnuel: 200 }
+      'Équipement 3★': { pourcentageBR: 100, forfaitAnnuel: 200, forfaitPodologie: { montantAnnuel: 35, montantParSeance: null, nbSeancesMax: null, enveloppePartagee: null } }
     },
     forfaitAnnuel: null,
     frequence: '1 paire par an',

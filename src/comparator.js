@@ -69,6 +69,84 @@ function listerFormules(mutuelle) {
   return Object.keys(mutuelle.formules);
 }
 
+function calculerRemboursementBilan(mutuelle, formuleNom, prixBilan) {
+  const formule = mutuelle.formules[formuleNom];
+  if (!formule) {
+    throw new Error(`Formule "${formuleNom}" introuvable pour ${mutuelle.nom}`);
+  }
+
+  const fp = formule.forfaitPodologie;
+  if (!fp) {
+    return {
+      nom: mutuelle.nom,
+      formule: formuleNom,
+      prixBilan,
+      remboursementPodologie: 0,
+      resteACharge: arrondir(prixBilan),
+      forfaitDisponible: false
+    };
+  }
+
+  // Plafonner par séance si applicable
+  let remboursement = prixBilan;
+  if (fp.montantParSeance != null) {
+    remboursement = Math.min(remboursement, fp.montantParSeance);
+  }
+  // Plafonner par le montant annuel si applicable
+  if (fp.montantAnnuel != null) {
+    remboursement = Math.min(remboursement, fp.montantAnnuel);
+  }
+
+  remboursement = Math.min(remboursement, prixBilan);
+
+  return {
+    nom: mutuelle.nom,
+    formule: formuleNom,
+    prixBilan,
+    remboursementPodologie: arrondir(remboursement),
+    resteACharge: arrondir(Math.max(0, prixBilan - remboursement)),
+    forfaitDisponible: true,
+    forfaitPodologie: fp
+  };
+}
+
+function simulerDeuxFactures(mutuelle, formuleNom, prixSemelles, prixBilan) {
+  const prixTotal = prixSemelles + prixBilan;
+
+  // Scénario A : facture unique (tout en semelles)
+  const factureUnique = calculerRemboursement(mutuelle, formuleNom, prixTotal);
+
+  // Scénario B : deux factures séparées
+  const factureSemelles = calculerRemboursement(mutuelle, formuleNom, prixSemelles);
+  const factureBilan = calculerRemboursementBilan(mutuelle, formuleNom, prixBilan);
+  const racDeuxFactures = arrondir(factureSemelles.resteACharge + factureBilan.resteACharge);
+
+  return {
+    prixTotal,
+    prixSemelles,
+    prixBilan,
+    factureUnique: {
+      resteACharge: factureUnique.resteACharge,
+      remboursementSecu: factureUnique.remboursementSecu,
+      remboursementMutuelle: factureUnique.remboursementMutuelle
+    },
+    deuxFactures: {
+      resteACharge: racDeuxFactures,
+      semelles: {
+        resteACharge: factureSemelles.resteACharge,
+        remboursementSecu: factureSemelles.remboursementSecu,
+        remboursementMutuelle: factureSemelles.remboursementMutuelle
+      },
+      bilan: {
+        resteACharge: factureBilan.resteACharge,
+        remboursementPodologie: factureBilan.remboursementPodologie
+      }
+    },
+    gain: arrondir(factureUnique.resteACharge - racDeuxFactures),
+    forfaitPodologieDisponible: factureBilan.forfaitDisponible
+  };
+}
+
 function arrondir(val) {
   return Math.round(val * 100) / 100;
 }
@@ -76,6 +154,8 @@ function arrondir(val) {
 module.exports = {
   loadMutuelles,
   calculerRemboursement,
+  calculerRemboursementBilan,
+  simulerDeuxFactures,
   comparerRemboursements,
   trouverMeilleure,
   listerFormules,

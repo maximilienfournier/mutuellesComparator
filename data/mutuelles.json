@@ -14,7 +14,13 @@
       },
       "Équipement 3★": {
         "pourcentageBR": 100,
-        "forfaitAnnuel": 200
+        "forfaitAnnuel": 200,
+        "forfaitPodologie": {
+          "montantAnnuel": 35,
+          "montantParSeance": null,
+          "nbSeancesMax": null,
+          "enveloppePartagee": null
+        }
       }
     },
     "forfaitAnnuel": null,
@@ -36,7 +42,13 @@
         "pourcentageBR": 230
       },
       "Intégrale": {
-        "pourcentageBR": 350
+        "pourcentageBR": 350,
+        "forfaitPodologie": {
+          "montantAnnuel": 160,
+          "montantParSeance": 40,
+          "nbSeancesMax": null,
+          "enveloppePartagee": "médecines douces"
+        }
       }
     },
     "forfaitAnnuel": null,
@@ -55,7 +67,13 @@
         "pourcentageBR": 300
       },
       "Blue": {
-        "pourcentageBR": 400
+        "pourcentageBR": 400,
+        "forfaitPodologie": {
+          "montantAnnuel": null,
+          "montantParSeance": 70,
+          "nbSeancesMax": 5,
+          "enveloppePartagee": "médecines douces"
+        }
       },
       "Purple": {
         "pourcentageBR": 500
@@ -176,6 +194,7 @@
     "forfaitAnnuel": null,
     "frequence": "1 paire par an",
     "conditions": "Sur prescription médicale",
+    "forfaitPodologieVerifie": false,
     "dataSource": "official",
     "confidenceScore": 0.9,
     "lastUpdated": "2026-02-25"

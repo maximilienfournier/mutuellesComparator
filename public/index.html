@@ -53,36 +53,106 @@
         </div>
       </section>
 
-      <!-- Step 3: Optional detailed calculation -->
-      <section class="card hidden" id="step-detail">
-        <h2>3. Calcul detaille (optionnel)</h2>
-        <div class="form-group">
-          <label for="prix-input">Prix reel des semelles</label>
-          <div class="input-euro">
-            <input type="number" id="prix-input" placeholder="150" min="0" step="0.01">
-            <span class="euro-sign">&euro;</span>
+      <!-- Step 3: Prix -->
+      <section class="card hidden" id="step-prix">
+        <h2>3. Prix de la prestation</h2>
+        <div id="prix-fields-single">
+          <div class="form-group">
+            <label for="prix-input">Prix total (bilan + semelles)</label>
+            <div class="input-euro">
+              <input type="number" id="prix-input" placeholder="185" min="0" step="0.01">
+              <span class="euro-sign">&euro;</span>
+            </div>
           </div>
         </div>
-
-        <div id="result-detail" class="result-detail hidden">
-          <div class="result-row">
-            <span>Part Securite sociale</span>
-            <span id="result-secu" class="result-amount positive">--</span>
+        <div id="prix-fields-double" class="hidden">
+          <div class="prix-grid">
+            <div class="form-group">
+              <label for="prix-total-input">Prix total (bilan + semelles)</label>
+              <div class="input-euro">
+                <input type="number" id="prix-total-input" placeholder="185" min="0" step="0.01">
+                <span class="euro-sign">&euro;</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="bilan-input">dont bilan podologique</label>
+              <div class="input-euro">
+                <input type="number" id="bilan-input" placeholder="60" min="0" step="0.01">
+                <span class="euro-sign">&euro;</span>
+              </div>
+            </div>
           </div>
-          <div class="result-row">
-            <span>Part mutuelle</span>
-            <span id="result-mutuelle" class="result-amount positive">--</span>
-          </div>
-          <div class="result-row result-total">
-            <span>Reste a charge</span>
-            <span id="result-rac" class="result-amount negative">--</span>
-          </div>
+          <p class="simulation-intro" id="simulation-intro"></p>
         </div>
       </section>
 
-      <!-- Step 4: Generate devis -->
+      <!-- Step 4: Results / Comparison -->
+      <section class="card hidden" id="step-results">
+        <h2>4. Reste a charge</h2>
+
+        <!-- Simple result (no forfait podo) -->
+        <div id="result-simple" class="hidden">
+          <div class="result-detail">
+            <div class="result-row">
+              <span>Part Securite sociale</span>
+              <span id="result-secu" class="result-amount positive">--</span>
+            </div>
+            <div class="result-row">
+              <span>Part mutuelle</span>
+              <span id="result-mutuelle" class="result-amount positive">--</span>
+            </div>
+            <div class="result-row result-total">
+              <span>Reste a charge</span>
+              <span id="result-rac" class="result-amount negative">--</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparison result (with forfait podo) -->
+        <div id="result-comparison" class="hidden">
+          <div class="simulation-comparison">
+            <div class="simulation-scenario">
+              <h3>1 facture</h3>
+              <div class="scenario-detail">
+                <span>Prix</span>
+                <span id="sim-unique-prix" class="result-amount">--</span>
+              </div>
+              <div class="scenario-detail">
+                <span>Secu</span>
+                <span id="sim-unique-secu" class="result-amount positive">--</span>
+              </div>
+              <div class="scenario-detail">
+                <span>Mutuelle</span>
+                <span id="sim-unique-mutuelle" class="result-amount positive">--</span>
+              </div>
+              <div class="scenario-detail scenario-total">
+                <span>Reste a charge</span>
+                <span id="sim-unique-rac" class="result-amount negative">--</span>
+              </div>
+            </div>
+            <div class="simulation-scenario">
+              <h3>2 factures</h3>
+              <div class="scenario-detail">
+                <span>Semelles RAC</span>
+                <span id="sim-deux-semelles-rac" class="result-amount">--</span>
+              </div>
+              <div class="scenario-detail">
+                <span>Bilan rembourse</span>
+                <span id="sim-deux-bilan-remb" class="result-amount positive">--</span>
+              </div>
+              <div class="scenario-detail scenario-total">
+                <span>Reste a charge</span>
+                <span id="sim-deux-rac" class="result-amount negative">--</span>
+              </div>
+            </div>
+          </div>
+          <div id="simulation-gain" class="simulation-gain"></div>
+        </div>
+      </section>
+
+      <!-- Step 5: Generate devis -->
       <section class="card hidden" id="step-devis">
-        <h2>4. Generer un devis</h2>
+        <h2>5. Generer un devis</h2>
         <div class="form-group">
           <label for="patient-input">Nom du patient</label>
           <input type="text" id="patient-input" placeholder="Nom du patient">

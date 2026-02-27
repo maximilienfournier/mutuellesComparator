@@ -1,5 +1,7 @@
 const {
   calculerRemboursement,
+  calculerRemboursementBilan,
+  simulerDeuxFactures,
   comparerRemboursements,
   trouverMeilleure,
   listerFormules,
@@ -154,5 +156,134 @@ describe('listerFormules', () => {
   test('retourne les noms des formules', () => {
     const formules = listerFormules(mutuelleA);
     expect(formules).toEqual(['Basique', 'Premium']);
+  });
+});
+
+// Mutuelles avec forfait podologie pour les tests
+const mutuelleAvecPodo = {
+  nom: 'Mutuelle Podo',
+  siren: '000000010',
+  formules: {
+    'Standard': {
+      pourcentageBR: 200,
+      forfaitPodologie: {
+        montantAnnuel: 160,
+        montantParSeance: 40,
+        nbSeancesMax: null,
+        enveloppePartagee: 'médecines douces'
+      }
+    },
+    'SansPodo': { pourcentageBR: 100 }
+  },
+  forfaitAnnuel: null,
+  frequence: '1 paire par an',
+  conditions: 'Sur prescription médicale'
+};
+
+const mutuelleAvecPodoSeances = {
+  nom: 'Mutuelle Séances',
+  siren: '000000011',
+  formules: {
+    'Blue': {
+      pourcentageBR: 400,
+      forfaitPodologie: {
+        montantAnnuel: null,
+        montantParSeance: 70,
+        nbSeancesMax: 5,
+        enveloppePartagee: 'médecines douces'
+      }
+    }
+  },
+  forfaitAnnuel: null,
+  frequence: '1 paire par an',
+  conditions: 'Sur prescription médicale'
+};
+
+const mutuelleAvecPodoDedié = {
+  nom: 'Mutuelle Dédiée',
+  siren: '000000012',
+  formules: {
+    'Top': {
+      pourcentageBR: 100,
+      forfaitAnnuel: 200,
+      forfaitPodologie: {
+        montantAnnuel: 35,
+        montantParSeance: null,
+        nbSeancesMax: null,
+        enveloppePartagee: null
+      }
+    }
+  },
+  forfaitAnnuel: null,
+  frequence: '1 paire par an',
+  conditions: 'Sur prescription médicale'
+};
+
+describe('calculerRemboursementBilan', () => {
+  test('rembourse le bilan plafonné par séance (MGEN-like)', () => {
+    const result = calculerRemboursementBilan(mutuelleAvecPodo, 'Standard', 60);
+    // plafond par séance = 40€, bilan = 60€ => remboursé 40€
+    expect(result.remboursementPodologie).toBe(40);
+    expect(result.resteACharge).toBe(20);
+    expect(result.forfaitDisponible).toBe(true);
+  });
+
+  test('rembourse le bilan plafonné par montant annuel', () => {
+    const result = calculerRemboursementBilan(mutuelleAvecPodoDedié, 'Top', 60);
+    // plafond annuel = 35€, bilan = 60€ => remboursé 35€
+    expect(result.remboursementPodologie).toBe(35);
+    expect(result.resteACharge).toBe(25);
+  });
+
+  test('rembourse intégralement si bilan < plafonds', () => {
+    const result = calculerRemboursementBilan(mutuelleAvecPodoSeances, 'Blue', 50);
+    // plafond par séance = 70€, bilan = 50€ => remboursé 50€
+    expect(result.remboursementPodologie).toBe(50);
+    expect(result.resteACharge).toBe(0);
+  });
+
+  test('retourne 0 si pas de forfait podologie', () => {
+    const result = calculerRemboursementBilan(mutuelleAvecPodo, 'SansPodo', 60);
+    expect(result.remboursementPodologie).toBe(0);
+    expect(result.resteACharge).toBe(60);
+    expect(result.forfaitDisponible).toBe(false);
+  });
+
+  test('retourne 0 si pas de forfait podologie (mutuelle sans champ)', () => {
+    const result = calculerRemboursementBilan(mutuelleA, 'Basique', 60);
+    expect(result.remboursementPodologie).toBe(0);
+    expect(result.forfaitDisponible).toBe(false);
+  });
+});
+
+describe('simulerDeuxFactures', () => {
+  test('deux factures réduisent le RAC quand forfait podo disponible', () => {
+    const result = simulerDeuxFactures(mutuelleAvecPodo, 'Standard', 125, 60);
+    // Facture unique 185€: sécu 17.32 + mutuelle(200%BR) 40.40 => RAC 127.28
+    // Deux factures: semelles 125€ RAC ~67.28 + bilan 60€ remb 40€ RAC 20 => total 87.28
+    expect(result.gain).toBeGreaterThan(0);
+    expect(result.deuxFactures.resteACharge).toBeLessThan(result.factureUnique.resteACharge);
+    expect(result.forfaitPodologieDisponible).toBe(true);
+  });
+
+  test('gain = 0 quand pas de forfait podologie', () => {
+    const result = simulerDeuxFactures(mutuelleAvecPodo, 'SansPodo', 125, 60);
+    // Sans forfait podo, le bilan n'est pas remboursé => RAC identique
+    expect(result.gain).toBe(0);
+    expect(result.forfaitPodologieDisponible).toBe(false);
+  });
+
+  test('prixTotal = prixSemelles + prixBilan', () => {
+    const result = simulerDeuxFactures(mutuelleAvecPodo, 'Standard', 125, 60);
+    expect(result.prixTotal).toBe(185);
+  });
+
+  test('simulation avec forfait dédié (Harmonie-like)', () => {
+    const result = simulerDeuxFactures(mutuelleAvecPodoDedié, 'Top', 125, 60);
+    // Facture unique 185€: sécu 17.32 + mutuelle(100%BR=28.86-17.32=11.54 + forfait 200) = 167.68 => RAC 0
+    // Deux factures: semelles 125€ => 17.32 + 107.68(plafonné) => RAC 0 ; bilan 60€ => remb 35 => RAC 25
+    // Gain négatif car la facture unique couvre déjà tout
+    expect(result.factureUnique.resteACharge).toBe(0);
+    expect(result.deuxFactures.resteACharge).toBeGreaterThanOrEqual(0);
   });
 });

@@ -17,7 +17,7 @@ function getVerifiedData() {
     siren: '813369193',
     formules: {
       'Green': { pourcentageBR: 300 },
-      'Blue': { pourcentageBR: 400 },
+      'Blue': { pourcentageBR: 400, forfaitPodologie: { montantAnnuel: null, montantParSeance: 70, nbSeancesMax: 5, enveloppePartagee: 'médecines douces' } },
       'Purple': { pourcentageBR: 500 }
     },
     forfaitAnnuel: null,
