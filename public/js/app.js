@@ -255,8 +255,12 @@
       return;
     }
 
-    // Fetch optimisation suggestion when prix total is entered
-    fetchOptimisation(prixTotal);
+    // Show optimisation suggestion only when bilan is not yet filled
+    if (isNaN(prixBilan) || prixBilan <= 0) {
+      fetchOptimisation(prixTotal);
+    } else {
+      optimisationSuggestion.classList.add('hidden');
+    }
 
     // If no bilan entered yet, show simple calc with the total price
     if (isNaN(prixBilan) || prixBilan <= 0) {
