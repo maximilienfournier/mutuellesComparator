@@ -1,5 +1,7 @@
 # Mutuelles Comparator — Semelles Orthopédiques
 
+**mode: prototype**
+
 ## Objectif
 
 Comparer les conditions de remboursement des semelles orthopédiques entre différentes mutuelles françaises. Permettre à un utilisateur de trouver rapidement quelle mutuelle offre le meilleur remboursement selon sa situation.
