@@ -1,5 +1,7 @@
 # Mutuelles Comparator — Semelles Orthopédiques
 
+**mode: prototype**
+
 ## Objectif
 
 Comparer les conditions de remboursement des semelles orthopédiques entre différentes mutuelles françaises. Permettre à un utilisateur de trouver rapidement quelle mutuelle offre le meilleur remboursement selon sa situation.
@@ -29,6 +31,9 @@ mutuellesComparator/
 │   └── api.test.js        # Tests d'intégration API
 └── package.json
 ```
+
+## Qualité et tests
+Voir `CONTRIBUTING.md` pour les guidelines de qualité de code, les types de tests à implémenter, et les bonnes pratiques.
 
 ## Fonctions principales
 
