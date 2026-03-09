@@ -30,6 +30,9 @@ mutuellesComparator/
 └── package.json
 ```
 
+## Qualité et tests
+Voir `CONTRIBUTING.md` pour les guidelines de qualité de code, les types de tests à implémenter, et les bonnes pratiques.
+
 ## Fonctions principales
 
 - `loadMutuelles()` — Charge les données des mutuelles depuis le JSON
